@@ -6,7 +6,7 @@
 
 <mapper namespace="com.augfw.infra.modules.codegroup.CodeGroupMapper">
 
-    <resultMap id="resultMapObj" type="com.augfw.infra.modules.codegroup.CodeGroupMapper"></resultMap>
+    <resultMap id="resultMapObj" type="com.augfw.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
