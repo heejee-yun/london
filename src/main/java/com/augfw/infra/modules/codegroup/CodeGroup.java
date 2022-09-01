@@ -8,6 +8,7 @@ public class CodeGroup {
 	private String seq;
 	private Integer oderny;
 	private String name;
+	private Integer userny;
 	public String getSeq() {
 		return seq;
 	}
@@ -32,10 +33,12 @@ public class CodeGroup {
 	public void setUserny(Integer userny) {
 		this.userny = userny;
 	}
-	private Integer userny;
+
 	
 	
 //-------------	
+
+
 
 
 	
