@@ -5,15 +5,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>CodeGroupList</title>
+		<title>AdminHome</title>
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     	<link rel="shortcut icon" href="D:\factory\ws_sts_4151\seoul\image\logo2\logo_16px.png">
   		<!-- 위에 <link 부분 없으면  Bootstrap  부분 적용 불가함. Favicon 적용 방법 다시 찾기  -->
+  		
 	</head>
 	<body> <!-- ######## 개인 프로젝트 회원관리 페이지 만드는데, 검색, 삭제 후가 가능하게 구현하기 / 모달 넣기 ######## -->
 		<form>
@@ -24,13 +27,13 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
-			<H3>CodeGroupList</H3>
+			<H3>Code</H3>
 			<div class="tap">
 				<ul class="nav nav-tabs">
-					<li class="nav-link active">
+					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="D:\factory\ws_sts_4151\seoul\public\toDoIt\dmin\codegroup.html">코드그룹관리</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-link active">
 						<a class="nav-link" href="D:\factory\ws_sts_4151\seoul\public\toDoIt\dmin\code.html">코드관리</a>
 					</li>
 					<li class="nav-item">
@@ -50,7 +53,7 @@
 						<option selected>선택</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
-						<option value="3">3</option>
+						<option value="3">3</option>		
 					</select>	
 					<div class="col">
 						<input type="text" class="form-control" placeholder="시작일">
@@ -104,28 +107,36 @@
 			      <th scope="col">#</th>
 			      <th scope="col">코드그룹코드</th>
 			      <th scope="col">코드그룹 이름(한글)</th>
-			      <th scope="col">코드그룹 이름(영문)</th>
-			      <th scope="col">코드갯수</th>
+			      <th scope="col">코드</th>
+			      <th scope="col">대체코드</th>
+			      <th scope="col">코드 이름(한글)</th>
+			      <th scope="col">코드 이름(영문)</th>
+			      <th scope="col">사용</th>
+			      <th scope="col">순서</th>
 			      <th scope="col">등록일</th>
 			      <th scope="col">수정일</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			  <c:forEach items="${list}" var="list" varStatus="status">
-			    <tr>
-			      <td>
-			      	<div>
-	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-					</div>
-			      </td>
-			      <td><c:out value="${list.seq }"/> </td>
-			      <td></td>
-			      <td><c:out value="${list.name }"/></td>
-			      <td></td>
-			      <td></td>
-			      <td></td>
-			      <td></td>
-			    </tr>
+			  	<c:forEach items="${list}" var="list" varStatus="status">
+				    <tr>
+				      <td>
+				      	<div>
+		 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+						</div>
+				      </td>
+				      <td>1</td>
+				      <td>1</td>
+				      <td><c:out value="${list.name }"/></td>
+				      <td><c:out value="${list.seq }"/></td>
+				      <td></td>
+				      <td><c:out value="${list.codename }"/> </td>
+				      <td>SKT</td>
+				      <td>y</td>
+				      <td><c:out value="${list.oderny }"/></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
 				</c:forEach>
 			  </tbody>
 			</table>
@@ -198,4 +209,3 @@
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
 	</body>
 </html>
-

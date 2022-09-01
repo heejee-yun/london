@@ -1,25 +1,23 @@
 package com.augfw.infra.modules.codegroup;
 
 public class CodeGroup {
-
-//	나한테 있는 코드 그룹 컬럼
-
-//	code_group
+	
 	private String seq;
-	private Integer oderny;
+	private Integer orderny;
 	private String name;
 	private Integer userny;
+	private Integer codecnt;
 	public String getSeq() {
 		return seq;
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public Integer getOderny() {
-		return oderny;
+	public Integer getOrderny() {
+		return orderny;
 	}
-	public void setOderny(Integer oderny) {
-		this.oderny = oderny;
+	public void setOrderny(Integer orderny) {
+		this.orderny = orderny;
 	}
 	public String getName() {
 		return name;
@@ -33,13 +31,15 @@ public class CodeGroup {
 	public void setUserny(Integer userny) {
 		this.userny = userny;
 	}
-
+	public Integer getCodecnt() {
+		return codecnt;
+	}
+	public void setCodecnt(Integer codecnt) {
+		this.codecnt = codecnt;
+	}
 	
+	// -----------------
 	
-//-------------	
-
-
-
 
 	
 }

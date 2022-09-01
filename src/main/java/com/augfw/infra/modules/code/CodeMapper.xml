@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.augfw.infra.modules.code.CodeMapper">
+
+    <resultMap id="resultMapObj" type="com.augfw.infra.modules.code.Code"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+select
+	a.seq
+    ,a.name
+	,b.orderny
+    ,b.name as codename
+from ccg a
+inner join cc b on b.ccg_seq = a.seq
+order by 
+	seq asc
+	</select>
+
+</mapper>	
