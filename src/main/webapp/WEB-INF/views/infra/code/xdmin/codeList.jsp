@@ -110,9 +110,6 @@
 			      <th scope="col">코드</th>
 			      <th scope="col">대체코드</th>
 			      <th scope="col">코드 이름(한글)</th>
-			      <th scope="col">코드 이름(영문)</th>
-			      <th scope="col">사용</th>
-			      <th scope="col">순서</th>
 			      <th scope="col">등록일</th>
 			      <th scope="col">수정일</th>
 			    </tr>
@@ -131,8 +128,6 @@
 				      <td><c:out value="${list.seq }"/></td>
 				      <td></td>
 				      <td><c:out value="${list.codename }"/> </td>
-				      <td>SKT</td>
-				      <td>y</td>
 				      <td><c:out value="${list.oderny }"/></td>
 				      <td></td>
 				      <td></td>

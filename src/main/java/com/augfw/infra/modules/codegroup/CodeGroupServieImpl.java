@@ -12,8 +12,10 @@ public class CodeGroupServieImpl implements CodeGroupService{
 	CodeGroupDao dao;
 	
 	@Override
-	public List<CodeGroup> selectList() throws Exception {
-		return dao.selectList();
+	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception {
+		
+		List<CodeGroup> list = dao.selectList(vo);
+		return list;
 	}
 	
 

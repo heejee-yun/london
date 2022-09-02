@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!doctype html>
 <html lang="en">
@@ -110,63 +111,28 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  <c:choose>
+			  <c:when test="${fn:length(list) eq 0}">
+			  <td> 검색 값이 없습니다 </td>
+			  </c:when>
+			  <c:otherwise>
+				<c:forEach items="${list}" var="list" varStatus="status">	
 			    <tr>
 			      <td>
 			      	<div>
 	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
 					</div>
 			      </td>
-			      <td>1</td>
-			      <td>1</td>
-			      <td>통신사</td>
-			      <td>telCompany</td>
-			      <td>3</td>
+			      <td><c:out value="${list.seq }"/> </td>
+			      <td></td>
+			      <td><c:out value="${list.name }"/></td>
 			      <td></td>
 			      <td></td>
-
-			    </tr>
-			    <tr>
-			      <td>
-			      	<div>
-	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-					</div>
-			      </td>
-			      <td>2</td>
-			      <td>2</td>
-			      <td>이메일</td>
-			      <td>email</td>
-			      <td>3</td>
-			      <td></td>
-				  <td></td>
-			    </tr>
-			    <tr>
-			      <td>
-			      	<div>
-	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-					</div>
-			      </td>
-			      <td>3</td>
-			      <td>3</td>
-			      <td>가입경로</td>
-			      <td>signUpPath</td>
-			      <td>4<td>
 			      <td></td>
 			      <td></td>
 			    </tr>
-			   <tr>
-			      <td>
-			      	<div>
-	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-					</div>
-			      </td>
-			      <td>4</td>
-			      <td>4</td>
-			      <td>성별</td>
-			      <td>gender</td>
-			      <td>2</td>
-			      <td></td>
-			      <td></td>
-			    </tr>
+				</c:forEach>
+				</c:choose>
 			  </tbody>
 			</table>
 			<nav aria-label="Page navigation example">

@@ -60,15 +60,18 @@
 					</div>
 				</div>
 				<div class="row">
-					<select class="col form-select" aria-label="option">
+					<select class="col form-select" name ="shOption" aria-label="option">
 						<option selected>검색구분</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 					</select>	
 					<div class="col-3" >
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="float: left;">
+						<input class="form-control me-2" id="shValue" value="<c:out value="${vo.shValue}"/>" type="search" placeholder="Search" aria-label="Search" style="float: left;">
 					</div>
+					<c:forEach items="${list}" var="list" varStatus="status">
+						<c:out value="${list.seq}"/> / <c:out value="${list.name}"/>
+					</c:forEach>
 					<div class="col-3">
 						<button class="btn btn-warning" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 						<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -111,7 +114,12 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  <c:forEach items="${list}" var="list" varStatus="status">
+			  <c:choose>
+			  <c:when test="${fn:length(list) eq 0}">
+			  <td> 검색 값이 없습니다 </td>
+			  </c:when>
+			  <c:otherwise>
+				<c:forEach items="${list}" var="list" varStatus="status">	
 			    <tr>
 			      <td>
 			      	<div>
@@ -127,6 +135,7 @@
 			      <td></td>
 			    </tr>
 				</c:forEach>
+				</c:choose>
 			  </tbody>
 			</table>
 			<nav aria-label="Page navigation example">
@@ -198,4 +207,5 @@
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
 	</body>
 </html>
+
 

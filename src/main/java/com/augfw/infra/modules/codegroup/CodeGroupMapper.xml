@@ -14,6 +14,7 @@
 		FROM ccg a
 		WHERE 1=1
 			AND userny = 1
+			AND name LIKE CONCAT ('%', #{shValue}, '%')
 	</select>
-
+											
 </mapper>	
