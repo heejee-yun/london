@@ -8,21 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/code/")
+@RequestMapping(value = "/member/")
 public class MemberController {
 
 	@Autowired
 	MemberServiceImpl service;
 	
 
-	@RequestMapping(value = "codeList")
+	@RequestMapping(value = "memberList")
 	public String codeList(Model model) throws Exception {
 		
 		
 		List<Member> list = service.selectList();
 		model.addAttribute("list", list);
 		
-		return "infra/code/xdmin/memberList";
+		return "infra/member/xdmin/memberList";
 	}
 	
 }

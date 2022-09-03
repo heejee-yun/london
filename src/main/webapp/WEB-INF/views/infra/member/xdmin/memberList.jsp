@@ -119,7 +119,7 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<c:forEach items="${list}" var="list" varStatus="status">
+			  <c:forEach items="${list}" var="list" varStatus="status">
 				    <tr>
 				      <td>
 				      	<div>
@@ -127,11 +127,11 @@
 						</div>
 				      </td>
 				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
+				      <td><c:out value="${list.name }"/></td>
+				      <td><c:out value="${list.id }"/></td>
+				      <td><c:out value="${list.mobile }"/></td>
+				      <td><c:out value="${list.email }"/></td>
+				      <td><c:out value="${list.dob }"/></td>
 				      <td></td>
 				      <td></td>
 				      <td></td>
@@ -139,7 +139,7 @@
 				      <td></td>
 				      <td></td>
 				    </tr>
-				</c:forEach>
+				    </c:forEach>
 			  </tbody>
 			</table>
 			<nav aria-label="Page navigation example">

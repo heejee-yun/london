@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CodeGroupController {
 
 	@Autowired
-	CodeGroupServieImpl service;
+	CodeGroupServiceImpl service;
 	
 
 	@RequestMapping(value = "codeGroupList")

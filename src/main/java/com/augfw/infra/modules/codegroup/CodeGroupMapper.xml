@@ -11,9 +11,10 @@
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.*
+			, (select count(aa.seq) from cc aa where 1=1 and aa.userny = 0 and aa.seq = a.seq) as seqCount
 		FROM ccg a
 		WHERE 1=1
-			AND userny = 1
+			AND userny = 0
 			AND name LIKE CONCAT ('%', #{shValue}, '%')
 	</select>
 											

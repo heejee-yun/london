@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CodeGroupServieImpl implements CodeGroupService{
+public class CodeGroupServiceImpl implements CodeGroupService{
 	
 	@Autowired
 	CodeGroupDao dao;

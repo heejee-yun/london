@@ -9,6 +9,9 @@ public class Member {
 	private String mobile;
 	private String email;
 	private String dob;
+	
+	// ------
+	
 	public Integer getSeq() {
 		return seq;
 	}

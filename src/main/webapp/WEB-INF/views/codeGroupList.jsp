@@ -132,6 +132,7 @@
 			      <td></td>
 			    </tr>
 				</c:forEach>
+				</c:otherwise>z
 				</c:choose>
 			  </tbody>
 			</table>

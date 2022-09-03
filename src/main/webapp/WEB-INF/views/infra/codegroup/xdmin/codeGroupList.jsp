@@ -116,7 +116,7 @@
 			  <tbody>
 			  <c:choose>
 			  <c:when test="${fn:length(list) eq 0}">
-			  <td> 검색 값이 없습니다 </td>
+			  <td class ="text-center" colspan ="8"> 검색 값이 없습니다 </td>
 			  </c:when>
 			  <c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">	
@@ -135,6 +135,7 @@
 			      <td></td>
 			    </tr>
 				</c:forEach>
+				</c:otherwise>
 				</c:choose>
 			  </tbody>
 			</table>
