@@ -10,13 +10,19 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class CodeGroupDao {
-	@Inject
-	@Resource(name = "sqlSession")
+	
+	@Inject 	// autowired 대신 inject 씀 
+	@Resource(name = "sqlSession") //어떤 db 와 커넥션 있는지 이름 정하는 곳
 	private SqlSession sqlSession;
 	
 	private static String namespace = "com.augfw.infra.modules.codegroup.CodeGroupMapper";
 	
-	public List<CodeGroup> selectList(CodeGroupVo vo){
-		return sqlSession.selectList(namespace + ".selectList", vo); 
-		}
+	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList(namespace +  ".selectList",vo);}
+	
+//	public List<CodeGroup> selectList(CodeGroupVo vo){
+//		// 컨트롤러에 있는 리스트 ? 
+////		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", vo);
+//		List<CodeGroup> list = sqlSession.selectList("com.augfw.infra.modules.codegroup.CodeGroupMapper.selectList", vo);
+//		return list;
+//		}
 }

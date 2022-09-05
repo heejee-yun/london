@@ -5,8 +5,9 @@ public class CodeGroup {
 	private String seq;
 	private Integer orderny;
 	private String name;
-	private Integer userny;
-	private Integer codecnt;
+	private Integer delNy;
+	
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -25,21 +26,16 @@ public class CodeGroup {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getUserny() {
-		return userny;
+	public Integer getDelNy() {
+		return delNy;
 	}
-	public void setUserny(Integer userny) {
-		this.userny = userny;
-	}
-	public Integer getCodecnt() {
-		return codecnt;
-	}
-	public void setCodecnt(Integer codecnt) {
-		this.codecnt = codecnt;
+	public void setDelNy(Integer delNy) {
+		this.delNy = delNy;
 	}
 	
 	// -----------------
 	
-
 	
+
+
 }

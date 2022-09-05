@@ -27,7 +27,7 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
-			<H3>Code</H3>
+			<H3>MemberList</H3>
 			<div class="tap">
 				<ul class="nav nav-tabs">
 					<li class="nav-item">

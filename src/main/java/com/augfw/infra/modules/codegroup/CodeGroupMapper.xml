@@ -7,15 +7,24 @@
 <mapper namespace="com.augfw.infra.modules.codegroup.CodeGroupMapper">
 
     <resultMap id="resultMapObj" type="com.augfw.infra.modules.codegroup.CodeGroup"></resultMap>
-	
+
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
-			, (select count(aa.seq) from cc aa where 1=1 and aa.userny = 0 and aa.seq = a.seq) as seqCount
-		FROM ccg a
+			*
+			<!-- (select count(aa.seq) from cc aa where 1=1 and aa.userny = 0 and aa.seq = a.seq) as seqCount -->
+		FROM ccg 
 		WHERE 1=1
-			AND userny = 0
-			AND name LIKE CONCAT ('%', #{shValue}, '%')
+			<if test="shDelNy !=null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
+			<if test="shValue !=null"></if>
+			
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when> <!-- 숫자: = #{shValue} -->
+				<when test="shOption == 2">AND oderny = #{shValue}</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
+				<when test="shOption == 3">AND name LIKE CONCAT('%', #{shValue},'%')</when>
+
+				<otherwise></otherwise>
+			</choose>
+
 	</select>
-											
+							
 </mapper>	

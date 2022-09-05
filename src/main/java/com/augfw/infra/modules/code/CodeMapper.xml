@@ -7,17 +7,27 @@
 <mapper namespace="com.augfw.infra.modules.code.CodeMapper">
 
     <resultMap id="resultMapObj" type="com.augfw.infra.modules.code.Code"></resultMap>
-	
+    
 	<select id="selectList" resultMap="resultMapObj">
-select
-	a.seq
-    ,a.name
-	,b.orderny
-    ,b.name as codename
-from ccg a
-inner join cc b on b.ccg_seq = a.seq
-order by 
-	seq asc
+		select
+			b.seq 
+		    ,b.name
+			,a.orderny as order_seq
+		    ,a.name as codename
+		    ,a.seq as cc_seq
+		from cc a
+		inner join ccg b on a.ccg_seq = b.seq
+		where 1=1
+			<if test="shdelNy !=null and !shdelNy.equals('')">AND a.delNy = #{shdelNy}</if>
+			<if test="shValue !=null"></if>
+			
+			<choose>
+				<when test="shOption == 1">AND b.seq = #{shValue}</when> <!-- 숫자: = #{shValue} -->
+				<when test="shOption == 2">AND b.name LIKE CONCAT('%', #{shValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
+				<when test="shOption == 3">AND a.orderny = #{shValue}</when>
+				<when test="shOption == 4">AND a.name LIKE CONCAT('%', #{shValue},'%')</when>
+				<when test="shOption == 5">AND a.seq = #{shValue}</when>
+				<otherwise></otherwise>
+			</choose>
 	</select>
-
 </mapper>	
