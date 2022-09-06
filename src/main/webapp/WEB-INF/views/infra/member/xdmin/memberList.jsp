@@ -19,7 +19,7 @@
   		
 	</head>
 	<body> <!-- ######## 개인 프로젝트 회원관리 페이지 만드는데, 검색, 삭제 후가 가능하게 구현하기 / 모달 넣기 ######## -->
-		<form>
+		<form method ="post" action ="/member/memberList">
 		<div class="container"> 
 			<div class="Navbar">
 				<nav class="navbar navbar-expand-lg" style="background-color: #F6E58D;">
@@ -63,14 +63,15 @@
 					</div>
 				</div>
 				<div class="row">
-					<select class="col form-select" aria-label="option">
-						<option selected>검색구분</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
+					<select class="col form-select" id="shOption" name="shOption" aria-label="option">
+						<option value=""<c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+						<option value="1"<c:if test="${empty vo.shOption}">selected</c:if>>이름</option>
+						<option value="2"<c:if test="${empty vo.shOption}">selected</c:if>>ID</option>
+						<option value="3"<c:if test="${empty vo.shOption}">selected</c:if>>이메일</option>
+						<option value="4"<c:if test="${empty vo.shOption}">selected</c:if>>모바일</option>
 					</select>	
 					<div class="col-3" >
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="float: left;">
+						<input class="form-control me-2" id ="shValue" name="shVale" value="<c:out value="${vo.shValue}"/>"type="text" placeholder="Search" aria-label="Search" style="float: left;">
 					</div>
 					<div class="col-3">
 						<button class="btn btn-warning" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -200,7 +201,7 @@
 				</div>
 			</div>
 			<div style="float: right;">
-				<a href="memberRegForm.html"> <!-- 등록버튼 -->
+				<a href="/codegroup/xdmin/codeGroupForm"> <!-- 등록버튼 -->
 					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
 				</a>
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>

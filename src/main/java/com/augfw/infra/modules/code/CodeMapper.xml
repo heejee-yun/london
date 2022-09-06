@@ -10,11 +10,11 @@
     
 	<select id="selectList" resultMap="resultMapObj">
 		select
-			b.seq 
+			a.seq
+			,a.ccg_seq 
 		    ,b.name
-			,a.orderny as order_seq
-		    ,a.name as codename
-		    ,a.seq as cc_seq
+			,a.orderNy 
+		    ,a.codename
 		from cc a
 		inner join ccg b on a.ccg_seq = b.seq
 		where 1=1
@@ -22,12 +22,30 @@
 			<if test="shValue !=null"></if>
 			
 			<choose>
-				<when test="shOption == 1">AND b.seq = #{shValue}</when> <!-- 숫자: = #{shValue} -->
+				<when test="shOption == 1">AND a.seq = #{shValue}</when> <!-- 숫자: = #{shValue} -->
 				<when test="shOption == 2">AND b.name LIKE CONCAT('%', #{shValue},'%')</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
-				<when test="shOption == 3">AND a.orderny = #{shValue}</when>
-				<when test="shOption == 4">AND a.name LIKE CONCAT('%', #{shValue},'%')</when>
-				<when test="shOption == 5">AND a.seq = #{shValue}</when>
+				<when test="shOption == 3">AND a.orderNy = #{shValue}</when>
+				<when test="shOption == 4">AND a.codename LIKE CONCAT('%', #{shValue},'%')</when>
+				<when test="shOption == 5">AND a.ccg_seq = #{shValue}</when>
 				<otherwise></otherwise>
 			</choose>
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO cc(
+			orderNy
+			,codename
+			,delNy
+		)
+		VALUES(
+			#{orderNy}
+			,#{codename}
+			,0
+		)
+		
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 </mapper>	

@@ -1,28 +1,28 @@
 package com.augfw.infra.modules.member;
 
 public class MemberVo {
-	private String shName;
-	private String shId;
-	private String email;
-	
-	public String getShName() {
-		return shName;
+	private Integer shOption;
+	private String shValue;
+	private String shDelNy;
+	public Integer getShOption() {
+		return shOption;
 	}
-	public void setShName(String shName) {
-		this.shName = shName;
+	public void setShOption(Integer shOption) {
+		this.shOption = shOption;
 	}
-	public String getShId() {
-		return shId;
+	public String getShDelNy() {
+		return shDelNy;
 	}
-	public void setShId(String shId) {
-		this.shId = shId;
+	public void setShDelNy(String shDelNy) {
+		this.shDelNy = shDelNy;
 	}
-	public String getEmail() {
-		return email;
+	public String getShValue() {
+		return shValue;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setShValue(String shValue) {
+		this.shValue = shValue;
 	}
+
 	
 
 }

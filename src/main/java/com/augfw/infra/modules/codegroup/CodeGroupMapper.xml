@@ -19,12 +19,30 @@
 			
 			<choose>
 				<when test="shOption == 1">AND seq = #{shValue}</when> <!-- 숫자: = #{shValue} -->
-				<when test="shOption == 2">AND oderny = #{shValue}</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
+				<when test="shOption == 2">AND orderny = #{shValue}</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
 				<when test="shOption == 3">AND name LIKE CONCAT('%', #{shValue},'%')</when>
 
 				<otherwise></otherwise>
 			</choose>
-
+		
 	</select>
-							
+	
+	<insert id="insert">
+		INSERT INTO ccg(
+			seq
+			,name
+			,orderNy
+			,delNy
+		)
+		VALUES(
+			#{seq}
+			,#{name}
+			,#{orderNy}
+			,0
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+					
 </mapper>	

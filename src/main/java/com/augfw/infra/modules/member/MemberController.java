@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.augfw.infra.modules.code.Code;
+import com.augfw.infra.modules.code.CodeVo;
+
 @Controller
 @RequestMapping(value = "/member/")
 public class MemberController {
@@ -16,13 +19,33 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memberList")
-	public String codeList(Model model) throws Exception {
+	public String codeList(Model model, MemberVo vo) throws Exception {
+		
+		System.out.println("vo.getShDelNy(): " + vo.getShDelNy());
+		System.out.println("vo.getShValue(): " + vo.getShValue());
+		System.out.println("vo.getShOption(): " + vo.getShOption());
 		
 		
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/member/xdmin/memberList";
 	}
+	
+	@RequestMapping(value="memberForm")
+	public String memberForm(Model model, MemberVo vo) throws Exception{
+		return "infra/code/xdmin/memberForm";
+	}
+	
+	@RequestMapping(value="codeInt")
+	public String codeInt(Member dto) throws Exception{
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: " + result);
+		
+		return "redirect:/member/memberList";
+	}
+	
+
 	
 }

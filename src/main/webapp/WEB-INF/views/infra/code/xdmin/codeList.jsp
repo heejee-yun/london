@@ -117,11 +117,11 @@
 	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
 					</div>
 			      </td>
-			      <td></td>
 			      <td><c:out value="${list.seq }"/></td>
+			      <td><c:out value="${list.ccg_seq }"/></td>
 			      <td><c:out value="${list.name }"/></td>
-			      <td><c:out value="${list.cc_seq }"/></td>
-			      <td><c:out value="${list.order_seq }"/></td>
+			      <td></td>
+			      <td><c:out value="${list.orderNy }"/></td>
 			      <td><c:out value="${list.codename }"/></td>
 			      <td></td>
 			      <td></td>
@@ -189,10 +189,10 @@
 				</div>
 			</div>
 			<div style="float: right;">
-				<a href="memberRegForm.html"> <!-- 등록버튼 -->
+				<a href="/code/codeForm"> <!-- 등록버튼 -->
 					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
 				</a>
-				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
+				<button class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></button>
 			</div>
 		</div>	
 		</form>

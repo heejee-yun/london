@@ -20,6 +20,16 @@ public class CodeDao {
 	
 	private static String namespace = "com.augfw.infra.modules.code.CodeMapper";
 	
-	public List<Code> selectList(CodeVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	public List<Code> selectList(CodeVo vo){ 
+		
+		List<Code> list = sqlSession.selectList("com.augfw.infra.modules.code.CodeMapper.selectList", vo); 
+		return list;
+		}
+	
+	public int insert(Code dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result: " + result);
+		return result;
+		}
 	
 }

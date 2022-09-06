@@ -3,19 +3,16 @@ package com.augfw.infra.modules.code;
 public class Code {
 	// ccg를 디폴트로 code를 넣는 걸로 
 
-	private Integer seq;
+	private String seq;
 	private String name;
 	private String codename;
-	private Integer order_seq;
-	private Integer cc_seq; 
+	private Integer orderNy;
+	private Integer ccg_seq; 
 	private Integer delNy;
-	
-	//------
-	
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getName() {
@@ -30,27 +27,25 @@ public class Code {
 	public void setCodename(String codename) {
 		this.codename = codename;
 	}
-	public Integer getOrder_seq() {
-		return order_seq;
+	public Integer getOrderNy() {
+		return orderNy;
 	}
-	public void setOrder_seq(Integer order_seq) {
-		this.order_seq = order_seq;
+	public void setOrderNy(Integer orderNy) {
+		this.orderNy = orderNy;
 	}
-	public Integer getCc_seq() {
-		return cc_seq;
+	public Integer getCcg_seq() {
+		return ccg_seq;
 	}
-	public void setCc_seq(Integer cc_seq) {
-		this.cc_seq = cc_seq;
+	public void setCcg_seq(Integer ccg_seq) {
+		this.ccg_seq = ccg_seq;
 	}
 	public Integer getDelNy() {
 		return delNy;
 	}
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
-	} 
-
+	}
 	
-	//-----
 
 
 }

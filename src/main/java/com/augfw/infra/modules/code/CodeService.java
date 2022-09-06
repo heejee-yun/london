@@ -7,6 +7,7 @@ import com.augfw.infra.modules.codegroup.CodeGroupVo;
 public interface CodeService {
 
 	public List<Code> selectList(CodeVo vo) throws Exception; 
+	public int insert(Code dto) throws Exception;
 	
 
 	

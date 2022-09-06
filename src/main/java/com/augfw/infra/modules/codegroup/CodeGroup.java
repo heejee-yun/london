@@ -3,22 +3,20 @@ package com.augfw.infra.modules.codegroup;
 public class CodeGroup {
 	
 	private String seq;
-	private Integer orderny;
+	private Integer orderNy;
 	private String name;
 	private Integer delNy;
-	
-	
 	public String getSeq() {
 		return seq;
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public Integer getOrderny() {
-		return orderny;
+	public Integer getOrderNy() {
+		return orderNy;
 	}
-	public void setOrderny(Integer orderny) {
-		this.orderny = orderny;
+	public void setOrderNy(Integer orderNy) {
+		this.orderNy = orderNy;
 	}
 	public String getName() {
 		return name;
@@ -33,7 +31,10 @@ public class CodeGroup {
 		this.delNy = delNy;
 	}
 	
-	// -----------------
+	// ---------
+
+
+	
 	
 	
 

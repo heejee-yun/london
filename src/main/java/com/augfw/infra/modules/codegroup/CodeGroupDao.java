@@ -17,12 +17,20 @@ public class CodeGroupDao {
 	
 	private static String namespace = "com.augfw.infra.modules.codegroup.CodeGroupMapper";
 	
-	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList(namespace +  ".selectList",vo);}
+//	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList(namespace +  ".selectList",vo);}
 	
-//	public List<CodeGroup> selectList(CodeGroupVo vo){
-//		// 컨트롤러에 있는 리스트 ? 
-////		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", vo);
-//		List<CodeGroup> list = sqlSession.selectList("com.augfw.infra.modules.codegroup.CodeGroupMapper.selectList", vo);
-//		return list;
-//		}
+	public List<CodeGroup> selectList(CodeGroupVo vo){
+		// 컨트롤러에 있는 리스트 ? 
+	//	List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", vo);
+		List<CodeGroup> list = sqlSession.selectList("com.augfw.infra.modules.codegroup.CodeGroupMapper.selectList", vo);
+		return list;
+		}
+	
+	public int insert(CodeGroup dto){
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result: " +  result);
+		return result;
+		}
+	
+	
 }
