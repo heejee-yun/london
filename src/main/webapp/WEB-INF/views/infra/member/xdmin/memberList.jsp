@@ -20,7 +20,6 @@
   		
 	</head>
 	<body> <!-- ######## 개인 프로젝트 회원관리 페이지 만드는데, 검색, 삭제 후가 가능하게 구현하기 / 모달 넣기 ######## -->
-		<form method ="post" action ="/member/memberList">
 		<div class="container"> 
 			<div class="Navbar">
 				<nav class="navbar navbar-expand-lg" style="background-color: #F6E58D;">
@@ -28,6 +27,7 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
+			<form method ="post" action ="/member/memberList">
 			<H3>MemberList</H3>
 			<div class="tap">
 				<ul class="nav nav-tabs">
@@ -112,6 +112,7 @@
 					</div>
 				</div>
 			</div>
+			</form>
 				<!-- ## 테이블 코드 ##  -->
 	    	<table class="table table-striped table-hover">
 			  <thead class="table-dark"> 
@@ -134,27 +135,34 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  <c:forEach items="${list}" var="list" varStatus="status">
-				    <tr>
-				      <td>
-				      	<div>
-		 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-						</div>
-				      </td>
-				      <td></td>
-				      <td><c:out value="${list.name }"/></td>
-				      <td><c:out value="${list.id }"/></td>
-				      <td><c:out value="${list.mobile }"/></td>
-				      <td><c:out value="${list.email }"/></td>
-				      <td><c:out value="${list.dob }"/></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				    </tr>
-				    </c:forEach>
+			  	<c:choose>
+				  <c:when test="${fn:length(list) eq 0}">
+				  	<td class ="text-center" colspan ="8"> 검색 값이 없습니다 </td>
+				  </c:when>
+				  <c:otherwise>
+					  <c:forEach items="${list}" var="list" varStatus="status">
+						    <tr>
+						      <td>
+						      	<div>
+				 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+								</div>
+						      </td>
+						      <td><c:out value="${list.seq }"/></td>
+						      <td><c:out value="${list.name }"/></td>
+						      <td><c:out value="${list.id }"/></td>
+						      <td><c:out value="${list.mobile }"/></td>
+						      <td><c:out value="${list.email }"/></td>
+						      <td><c:out value="${list.dob }"/></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+					    </c:forEach>
+				   </c:otherwise>
+				</c:choose>
 			  </tbody>
 			</table>
 			<nav aria-label="Page navigation example">
@@ -221,7 +229,6 @@
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
 			</div>
 		</div>	
-		</form>
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

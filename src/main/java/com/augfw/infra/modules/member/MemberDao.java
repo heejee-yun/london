@@ -18,7 +18,7 @@ public class MemberDao {
 	private static String namespace = "com.augfw.infra.modules.member.MemberMapper";
 	
 	public List<Member> selectList(MemberVo vo){
-		List<Member> list = sqlSession.selectList("com.augfw.infra.modules.member.MemberMapper",vo);
+		List<Member> list = sqlSession.selectList("com.augfw.infra.modules.member.MemberMapper.selectList",vo);
 		return list; 
 		}
 

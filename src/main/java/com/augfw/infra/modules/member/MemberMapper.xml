@@ -10,7 +10,12 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			*
+			seq
+			,id
+			,name
+			,mobile
+			,email
+			,dob
 		FROM member 
 		WHERE 1=1
 
@@ -22,14 +27,15 @@
 				<when test="shOption == 2">AND mobile = right(#{shValue},4)</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
 				<when test="shOption == 3">AND name LIKE CONCAT('%', #{shValue},'%')</when>
 
-	
+<!-- 	
 				<when test="shOptionDate == 1">AND joinDate BETWEEN #{ShDateStart} AND #{shDateEnd}</when>
 				<when test="shOptionDate == 2">AND dob BETWEEN #{ShDateStart} AND #{shDateEnd}</when>	
-				
+ -->				
 				<otherwise></otherwise>
 			</choose>
 			
 			</select>
+			
 			<insert id="insert">
 				INSERT INTO member(
 					id

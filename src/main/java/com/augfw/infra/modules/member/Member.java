@@ -3,19 +3,17 @@ package com.augfw.infra.modules.member;
 public class Member {
 	// ccg를 디폴트로 code를 넣는 걸로 
 	// private Integer codeseq; 나중에 추가하기
-	private Integer seq;
+	private String seq;
 	private String id;
 	private String name;
 	private String mobile;
 	private String email;
 	private String dob;
 	
-	// ------
-	
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getId() {
@@ -48,12 +46,8 @@ public class Member {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	private String gender;
+	
+	// ------
+	
 
 }
