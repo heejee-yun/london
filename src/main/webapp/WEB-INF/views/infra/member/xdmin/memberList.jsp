@@ -51,7 +51,7 @@
 						<option value="1">Y</option>
 					</select>	
 					
-					
+ 					
 					<input class="form-control shDate" type="text" id="shDateStart" name="shDateStart" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
 					<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
 					
@@ -61,7 +61,7 @@
 							<option value="2">수정일</option>
 							<option>끝날짜</option>
 					</select>
-					
+					 
 					
 					<select class="col form-select">
 						<option selected>선택</option>
@@ -112,7 +112,6 @@
 					</div>
 				</div>
 			</div>
-			</form>
 				<!-- ## 테이블 코드 ##  -->
 	    	<table class="table table-striped table-hover">
 			  <thead class="table-dark"> 
@@ -137,7 +136,7 @@
 			  <tbody>
 			  	<c:choose>
 				  <c:when test="${fn:length(list) eq 0}">
-				  	<td class ="text-center" colspan ="8"> 검색 값이 없습니다 </td>
+				  	<td class ="text-center" colspan ="13"> 검색 값이 없습니다 </td>
 				  </c:when>
 				  <c:otherwise>
 					  <c:forEach items="${list}" var="list" varStatus="status">
@@ -228,6 +227,7 @@
 				</a>
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
 			</div>
+		</form>
 		</div>	
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
