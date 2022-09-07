@@ -18,29 +18,33 @@
 			<if test="shValue !=null"></if>
 			
 			<choose>
-				<when test="shOption == 1">AND seq = #{shValue}</when> <!-- 숫자: = #{shValue} -->
-				<when test="shOption == 2">AND oderny = #{shValue}</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
+				<when test="shOption == 1">AND id LIKE CONCAT('%', #{shValue},'%')</when> <!-- 숫자: = #{shValue} -->
+				<when test="shOption == 2">AND mobile = right(#{shValue},4)</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
 				<when test="shOption == 3">AND name LIKE CONCAT('%', #{shValue},'%')</when>
 
+	
+				<when test="shOptionDate == 1">AND joinDate BETWEEN #{ShDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND dob BETWEEN #{ShDateStart} AND #{shDateEnd}</when>	
+				
 				<otherwise></otherwise>
 			</choose>
-	</select>
-	<insert id="insert">
-		INSERT INTO cc(
-			seq
-			,id
-			,name
-			,mobile
-			,email
-			,dob
-		)
-		VALUES(
-			seq
-			,#{name}
-			,#{mobile}
-			,#{email}
-			,#{dob}
-		)
+			
+			</select>
+			<insert id="insert">
+				INSERT INTO member(
+					id
+					,name
+					,mobile
+					,email
+					,dob
+				)
+				VALUES(
+					#{id}
+					,#{name}
+					,#{mobile}
+					,#{email}
+					,#{dob}
+				)
 		
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

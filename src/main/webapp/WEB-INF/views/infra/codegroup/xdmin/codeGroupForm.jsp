@@ -44,20 +44,75 @@
 					<table class="table table-striped table-hover">
 						<tr>
 							<td>seq</td>
-							<td><input type="text" name="seq" class="form-control" placeholder="입력하시오"></td>
+							<td><input type="text" name="seq" class="form-control" placeholder="입력하시오" id="seq"></td>
 						</tr>
 						<tr>
 							<td>코드그룹 이름</td>
-							<td><input name = "name" type="text" class="form-control" placeholder="입력하시오"></td>
+							<td><input name = "name" type="text" class="form-control" placeholder="입력하시오" id="name"></td>
 						</tr>
 						<tr>
 							<td>orderNy</td>
-							<td><input type="text" name="orderNy" class="form-control" placeholder="입력하시오"></td>
+							<td><input type="text" name="orderNy" class="form-control" placeholder="입력하시오" id="orderNy"></td>
 						</tr>
 						<tr>
 							<td>delNy</td>
-							<td><input type="text" name="delNy" class="form-control" placeholder="입력하시오"></td>
+							<td><input type="text" name="delNy" class="form-control" placeholder="입력하시오" id="delNy"></td>
 						</tr>
+						
+						
+						
+						
+						<tr>
+							<td>통신사</td>
+							<td>
+								<select name ="telecom" id="telecom">
+									<option>선택하세요</option>
+									<option>skt</option>
+									<option>kt</option>
+									<option>lgt</option>						
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>오늘은 행복한 날</td>
+							<td>
+								<div class="form-check">
+								  <input class="form-check-input" name="happy" type="checkbox" value="YES. I AM HAPPY" value="checked1">
+								  <label class="form-check-label" for="flexCheckDefault">
+								  	Y = 1
+								  </label>
+								</div>
+								<div class="form-check">
+								  <input class="form-check-input" name="happy" type="checkbox" value="JUST NOT TODAY" id="checked2">
+								  <label class="form-check-label" for="flexCheckChecked">
+								    N = 0
+								  </label>
+								</div>
+							</td>
+						</tr>	
+						<tr>
+							<td>성별</td>
+							<td>
+								<div class="form-check">
+								  <input class="form-check-input" type="radio" name="gender" id="Radio1" value="여성">
+								  <label class="form-check-label" for="flexRadioDefault1">
+								    여성
+								  </label>
+								</div>
+								<div class="form-check">
+								  <input class="form-check-input" type="radio" name="gender" id="Radio2" value="남성">
+								  <label class="form-check-label" for="flexRadioDefault2">
+								    남성
+								  </label>
+								</div>
+							</td>
+						</tr>
+				
+						
+						
+						
+						
+						
 					</table>
 				</div>
 			<div class="col-3">
@@ -130,10 +185,32 @@
 					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
 				</a>
 					<button class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></button>
+					
+					<button style="cursor: pointer;" class="btn btn-primary" type="button" onClick="test()"><i class="fa-solid fa-plus">test button</i></button>
 			</div>
 		</form>	
 		</div>	
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
+    	<script type="text/javascript">
+    		function test(){
+    			
+    			alert("test");
+    			
+    			alert(document.getElementById('name').value);
+    			
+    			alert(document.getElementById('telecom').options[document.getElementById('telecom').selectedIndex].value);
+    			alert(document.querySelector("input[name='happy']:checked").value);;
+    			alert(document.querySelector("input[name='gender']:checked").value);;
+
+    			if(document.getElementById("name").value == '' || document.getElementById("name").value == null){
+    				alert("입력해주세요...");
+    				document.getElementById("name").value= "";
+    				document.getElementById("name").focus();
+    			
+    			return false;
+    			}
+    		}
+    	</script>
 	</body>
 </html>

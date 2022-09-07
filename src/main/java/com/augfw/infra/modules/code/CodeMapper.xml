@@ -27,6 +27,9 @@
 				<when test="shOption == 3">AND a.orderNy = #{shValue}</when>
 				<when test="shOption == 4">AND a.codename LIKE CONCAT('%', #{shValue},'%')</when>
 				<when test="shOption == 5">AND a.ccg_seq = #{shValue}</when>
+				
+				
+				
 				<otherwise></otherwise>
 			</choose>
 	</select>
@@ -36,11 +39,13 @@
 			orderNy
 			,codename
 			,delNy
+			,ccg_seq
 		)
 		VALUES(
 			#{orderNy}
 			,#{codename}
 			,0
+			,4
 		)
 		
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">

@@ -28,7 +28,7 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
-			<H3>MemberList</H3>
+			<H3>MemberForm</H3>
 			<div class="tap">
 				<ul class="nav nav-tabs">
 					<li class="nav-item">
@@ -41,7 +41,6 @@
 						<a class="nav-link" href="D:\factory\ws_sts_4151\seoul\public\toDoIt\dmin\memberlist.html">회원관리</a>
 					</li>
 				</ul>
-				<!-- <img src="D:\factory\ws_sts_4151\seoul\image\handsForAdmin.png" style="width: 100%"> -->
 			</div>
 			<!-- ## 검색 블록 ## -->
 			<div style="margin: 30px 100px 50px 100px; border: solid 1px; padding: 20px 20px 20px 20px;">
@@ -53,14 +52,13 @@
 					
 					
 					<input class="form-control shDate" type="text" id="shDateStart" name="shDateStart" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
-					<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
-					
 					<select class="form-select" name="shOptionDate">
 							<option value="">::날짜::</option>
 							<option value="1">등록일</option>
 							<option value="2">수정일</option>
 							<option>끝날짜</option>
 					</select>
+					<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
 					
 					
 					<select class="col form-select">
@@ -215,7 +213,7 @@
 				</div>
 			</div>
 			<div style="float: right;">
-				<a href="/memeber/xdmin/memeberForm"> <!-- 등록버튼 -->
+				<a href="/codegroup/xdmin/codeGroupForm"> <!-- 등록버튼 -->
 					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
 				</a>
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
@@ -226,23 +224,23 @@
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				 $("input.shDate").datepicker();
-			}); 
-		
-			$.datepicker.setDefaults({
-			    dateFormat: 'yy-mm-dd',
-			    prevText: '이전 달',
-			    nextText: '다음 달',
-			    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-			    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-			    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-			    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-			    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-			    showMonthAfterYear: true,
-			    yearSuffix: '년'
-			});
+		 	<script type="text/javascript">
+		$(document).ready(function(){
+			 $("input.shDate").datepicker();
+		}); 
+	
+		$.datepicker.setDefaults({
+		    dateFormat: 'yy-mm-dd',
+		    prevText: '이전 달',
+		    nextText: '다음 달',
+		    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		    showMonthAfterYear: true,
+		    yearSuffix: '년'
+		});
 		</script>
 	</body>
 </html>
