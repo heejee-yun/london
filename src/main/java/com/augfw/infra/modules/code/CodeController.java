@@ -38,8 +38,8 @@ public class CodeController {
 		return "infra/code/xdmin/codeForm";
 	}
 	
-	@RequestMapping(value="codeInt")
-	public String codeInt(Code dto) throws Exception{
+	@RequestMapping(value="codeInst")
+	public String codeInst(Code dto) throws Exception{
 		
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);

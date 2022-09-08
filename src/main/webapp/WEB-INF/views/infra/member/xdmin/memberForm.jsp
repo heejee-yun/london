@@ -28,6 +28,8 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
+			
+			
 			<H3>MemberForm</H3>
 			<div class="tap">
 				<ul class="nav nav-tabs">
@@ -229,7 +231,7 @@
 			 $("input.shDate").datepicker();
 		}); 
 	
-		$.datepicker.setDefaults({
+		$.datepicker.setDefaults({ 
 		    dateFormat: 'yy-mm-dd',
 		    prevText: '이전 달',
 		    nextText: '다음 달',

@@ -22,9 +22,9 @@ public class MemberController {
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
 		
-		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());  	
-		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+//		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());  	
+//		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
 		
 		
 		List<Member> list = service.selectList(vo);
@@ -38,8 +38,8 @@ public class MemberController {
 		return "infra/code/xdmin/memberForm";
 	}
 	
-	@RequestMapping(value="memberInt")
-	public String memberInt(Member dto) throws Exception{
+	@RequestMapping(value="memberInst")
+	public String memberInst(Member dto) throws Exception{
 		
 		int result = service.insert(dto);
 		System.out.println("controller result: " + result);

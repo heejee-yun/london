@@ -46,10 +46,11 @@
 			<!-- ## 검색 블록 ## -->
 			<div style="margin: 30px 100px 50px 100px; border: solid 1px; padding: 20px 20px 20px 20px;">
 				<div class="row" style="margin-bottom: 20px;">
-					<select class="col form-select" style="margin-right: 10px;">
-						<option selected>N</option>
-						<option value="1">Y</option>
-					</select>	
+					<select class="col-3 form-select" id="shdelNy" name="shdelNy" aria-label="option">
+						<option value="" <c:if test="${empty vo.shdelNy}">selected</c:if>>삭제구분</option>
+						<option value="0" <c:if test="${vo.shdelNy eq 0}">selected</c:if>>N</option>
+						<option value="1" <c:if test="${vo.shdelNy eq 1}">selected</c:if>>Y</option>
+				</select>		
 					
  					
 					<input class="form-control shDate" type="text" id="shDateStart" name="shDateStart" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
@@ -79,10 +80,10 @@
 				<div class="row">
 					<select class="col form-select" id="shOption" name="shOption" aria-label="option">
 						<option value=""<c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
-						<option value="1"<c:if test="${empty vo.shOption}">selected</c:if>>이름</option>
-						<option value="2"<c:if test="${empty vo.shOption}">selected</c:if>>ID</option>
-						<option value="3"<c:if test="${empty vo.shOption}">selected</c:if>>이메일</option>
-						<option value="4"<c:if test="${empty vo.shOption}">selected</c:if>>모바일</option>
+						<option value="1"<c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
+						<option value="2"<c:if test="${vo.shOption eq 2}">selected</c:if>>ID</option>
+						<option value="3"<c:if test="${vo.shOption eq 3}">selected</c:if>>이메일</option>
+						<option value="4"<c:if test="${vo.shOption eq 4}">selected</c:if>>모바일</option>
 					</select>	
 					<div class="col-3" >
 						<input class="form-control me-2" id ="shValue" name="shVale" value="<c:out value="${vo.shValue}"/>"type="text" placeholder="Search" aria-label="Search" style="float: left;">
