@@ -57,8 +57,6 @@
 							<option>끝날짜</option>
 					</select>
 					<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
-					
-					
 					<select class="col form-select">
 						<option selected>선택</option>
 						<option value="1">1</option>
