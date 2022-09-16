@@ -58,10 +58,6 @@
 							<td>delNy</td>
 							<td><input type="text" name="delNy" class="form-control" placeholder="입력하시오" id="delNy"></td>
 						</tr>
-						
-						
-						
-						
 						<tr>
 							<td>통신사</td>
 							<td>
@@ -107,12 +103,6 @@
 								</div>
 							</td>
 						</tr>
-				
-						
-						
-						
-						
-						
 					</table>
 				</div>
 			<div class="col-3">
@@ -184,16 +174,17 @@
 				<a href="/codeGroup/codeGroupForm"> <!-- 등록버튼 -->
 					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
 				</a>
-					<button class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></button>
+				<button class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></button>
 					
-					<button style="cursor: pointer;" class="btn btn-primary" type="button" onClick="test()"><i class="fa-solid fa-plus">test button</i></button>
+				<button style="cursor: pointer;" class="btn btn-primary" type="button" onClick="test()"><i class="fa-solid fa-plus">test button</i></button>
 			</div>
 		</form>	
 		</div>	
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
     	<script type="text/javascript">
-    		function test(){
+    	
+/*     		function test(){
     			
     			alert("test");
     			
@@ -210,7 +201,9 @@
     			
     			return false;
     			}
-    		}
+    		} */
+    		
+    		
     	</script>
 	</body>
 </html>

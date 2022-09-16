@@ -28,8 +28,6 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
-			
-			
 			<H3>MemberForm</H3>
 			<div class="tap">
 				<ul class="nav nav-tabs">
@@ -51,8 +49,6 @@
 						<option selected>N</option>
 						<option value="1">Y</option>
 					</select>	
-					
-					
 					<input class="form-control shDate" type="text" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
 					<select class="form-select" name="shOptionDate"  id="shDateStart" name="shDateStart">
 							<option value="">::날짜::</option>
@@ -135,26 +131,26 @@
 			  </thead>
 			  <tbody>
 			  <c:forEach items="${list}" var="list" varStatus="status">
-				    <tr>
-				      <td>
-				      	<div>
-		 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-						</div>
-				      </td>
-				      <td></td>
-				      <td><c:out value="${list.name }"/></td>
-				      <td><c:out value="${list.id }"/></td>
-				      <td><c:out value="${list.mobile }"/></td>
-				      <td><c:out value="${list.email }"/></td>
-				      <td><c:out value="${list.dob }"/></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				      <td></td>
-				    </tr>
-				    </c:forEach>
+			    <tr>
+			      <td>
+			      	<div>
+	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+					</div>
+			      </td>
+			      <td></td>
+			      <td><c:out value="${list.name }"/></td>
+			      <td><c:out value="${list.id }"/></td>
+			      <td><c:out value="${list.mobile }"/></td>
+			      <td><c:out value="${list.email }"/></td>
+			      <td><c:out value="${list.dob }"/></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			    </tr>
+			    </c:forEach>
 			  </tbody>
 			</table>
 			<nav aria-label="Page navigation example">

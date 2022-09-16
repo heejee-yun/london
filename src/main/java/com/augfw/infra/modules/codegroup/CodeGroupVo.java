@@ -10,7 +10,7 @@ public class CodeGroupVo {
 	//--
 	//--
 	private String mainKey;
-	public Integer getMainKey() {
+	public String getMainKey() {
 		return mainKey;
 	}
 	public void setMainKey(String string) {
