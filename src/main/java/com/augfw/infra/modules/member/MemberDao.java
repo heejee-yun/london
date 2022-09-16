@@ -8,6 +8,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.augfw.infra.modules.codegroup.CodeGroup;
+import com.augfw.infra.modules.codegroup.CodeGroupVo;
+
 
 @Repository
 public class MemberDao {
@@ -25,6 +28,19 @@ public class MemberDao {
 	public int insert(Member dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		System.out.println("dao result: " +  result);
+		return result;
+	}
+
+	public Member selectOne(MemberVo vo) {
+		Member result = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao result:" + result);
+		return result;
+	}
+	
+	
+	/* return 할 값 기준으로 넣음 => int selectOneCount */
+	public int selectOneCount(MemberVo vo) {  
+		int result = sqlSession.selectOne("com.augfw.infra.modules.member.MemberMapper.selectOneCount", vo);
 		return result;
 	}
 

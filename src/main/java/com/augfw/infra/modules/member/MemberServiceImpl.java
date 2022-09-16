@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.augfw.infra.modules.codegroup.CodeGroup;
+import com.augfw.infra.modules.codegroup.CodeGroupVo;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 	
@@ -24,7 +27,20 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 	
-
+	@Override
+	public Member selectOne(MemberVo vo) throws Exception{
+		Member result = dao.selectOne(vo);
+		System.out.println("service result: " + result);
+		return result;
+	}
+	
+	@Override
+	public int selectOneCount(MemberVo vo) throws Exception{
+		int result = dao.selectOneCount(vo);
+		System.out.println("service result: " + result);
+		return result;
+	}
+ 	
 	
 }
 

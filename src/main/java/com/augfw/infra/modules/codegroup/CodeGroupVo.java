@@ -5,6 +5,23 @@ public class CodeGroupVo {
 	private Integer shOption;
 	private String shValue;
 	private String shDelNy;
+	//---
+	private String seq;
+	//--
+	//--
+	private String mainKey;
+	public Integer getMainKey() {
+		return mainKey;
+	}
+	public void setMainKey(String string) {
+		this.mainKey = string;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	//------
 	public Integer getShOption() {
 		return shOption;

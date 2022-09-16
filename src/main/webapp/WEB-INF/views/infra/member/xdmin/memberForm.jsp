@@ -53,11 +53,11 @@
 					</select>	
 					
 					
-					<input class="form-control shDate" type="text" id="shDateStart" name="shDateStart" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
-					<select class="form-select" name="shOptionDate">
+					<input class="form-control shDate" type="text" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
+					<select class="form-select" name="shOptionDate"  id="shDateStart" name="shDateStart">
 							<option value="">::날짜::</option>
-							<option value="1">등록일</option>
-							<option value="2">수정일</option>
+							<option value="1">생일</option>
+							<option value="2">등록일</option>
 							<option>끝날짜</option>
 					</select>
 					<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">

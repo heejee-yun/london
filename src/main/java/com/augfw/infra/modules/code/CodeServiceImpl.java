@@ -5,10 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.augfw.infra.modules.codegroup.CodeGroup;
-import com.augfw.infra.modules.codegroup.CodeGroupDao;
-import com.augfw.infra.modules.codegroup.CodeGroupVo;
-
 @Service
 public class CodeServiceImpl implements CodeService{
 	
@@ -33,6 +29,14 @@ public class CodeServiceImpl implements CodeService{
 		System.out.println("service result: " + result);
 		return result;
 	}
+	
+	@Override
+	public Code selectOne(CodeVo vo) throws Exception{
+		Code result = dao.selectOne(vo);
+		System.out.println("service result: " + result);
+		return result;
+	}
+
 	
 }
 

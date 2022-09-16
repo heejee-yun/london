@@ -27,7 +27,12 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
-			<form method ="post" action ="/member/memberList">
+			<form method ="post" action ="/member/memberList" name="formList"> <!-- action-> obj to move -->
+			<input type="hidden" name="mainKey">
+			<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+			<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+			<input type="hidden" name="checkboxSeqArray">
+			
 			<H3>MemberList</H3>
 			<div class="tap">
 				<ul class="nav nav-tabs">
@@ -46,23 +51,22 @@
 			<!-- ## 검색 블록 ## -->
 			<div style="margin: 30px 100px 50px 100px; border: solid 1px; padding: 20px 20px 20px 20px;">
 				<div class="row" style="margin-bottom: 20px;">
-					<select class="col-3 form-select" id="shdelNy" name="shdelNy" aria-label="option">
-						<option value="" <c:if test="${empty vo.shdelNy}">selected</c:if>>삭제구분</option>
-						<option value="0" <c:if test="${vo.shdelNy eq 0}">selected</c:if>>N</option>
-						<option value="1" <c:if test="${vo.shdelNy eq 1}">selected</c:if>>Y</option>
-				</select>		
-					
- 					
-					<input class="form-control shDate" type="text" id="shDateStart" name="shDateStart" value="${vo.shDateStart}" placeholder="시작일" autocomplete="off">
-					<input class="form-control shDate" type="text" id="shDateEnd" name="shDateEnd" value="${vo.shDateEnd}" placeholder="종료일" autocomplete="off">
-					
-					<select class="form-select" name="shOptionDate">
-							<option value="">::날짜::</option>
-							<option value="1">등록일</option>
-							<option value="2">수정일</option>
-							<option>끝날짜</option>
+					<select class="col-3 form-select" id="shDelNy" name="shDelNy" aria-label="option">
+						<option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제구분</option>
+						<option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+						<option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
+					</select>	
+						
+					<select class="form-select" name="shOptionDate" id="name="shOptionDate">
+						<option value="" <c:if test="${empty vo.shOptionDate}">selected</c:if>>::날짜::</option>
+						<option value="1" <c:if test="${vo.shOptionDate eq 1}">selected</c:if>>생일</option>
+						<option value="2" <c:if test="${vo.shOptionDate eq 2}">selected</c:if>>가입일</option>
+						<option value="3" <c:if test="${vo.shOptionDate eq 3}">selected</c:if>>탈퇴일</option>
 					</select>
-					 
+					
+					
+					
+					
 					
 					<select class="col form-select">
 						<option selected>선택</option>
@@ -165,6 +169,7 @@
 				</c:choose>
 			  </tbody>
 			</table>
+			<!-- 
 			<nav aria-label="Page navigation example">
 			  <ul class="pagination justify-content-center">
 			    <li class="page-item">
@@ -172,9 +177,9 @@
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
+			    <li class="page-item"><a class="page-link" href="http://localhost:8080/member/memberList?pageNumber=1">1</a></li>
+			    <li class="page-item"><a class="page-link" href="http://localhost:8080/member/memberList?pageNumber=2">2</a></li>
+			    <li class="page-item"><a class="page-link" href="http://localhost:8080/member/memberList?pageNumber=3">3</a></li>
 			    <li class="page-item">
 			      <a class="page-link" href="#" aria-label="Next">
 			        <span aria-hidden="true">&raquo;</span>
@@ -182,6 +187,40 @@
 			    </li>
 			  </ul>
 			</nav>
+			 -->
+			
+						
+						
+			<div class="container-fluid px-0 mt-2">
+			    <div class="row">
+			        <div class="col">
+			            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+			            <ul class="pagination justify-content-center mb-0">
+			                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+			<c:if test="${vo.startPage gt vo.pageNumToShow}">
+			                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+			</c:if>
+			<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+				<c:choose>
+					<c:when test="${i.index eq vo.thisPage}">
+			                <li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+					</c:when>
+					<c:otherwise>             
+			                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>                
+			<c:if test="${vo.endPage ne vo.totalPages}">                
+			                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+			</c:if>
+			                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+			            </ul>
+			        </div>
+			    </div>
+			</div>
+						
+			
+			
 			<div style="float: left;">
 				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 					<i class="fa-solid fa-rotate-left">취소</i>
@@ -238,7 +277,7 @@
 			$(document).ready(function(){
 				 $("input.shDate").datepicker();
 			}); 
-		
+/* 		
 			$.datepicker.setDefaults({
 			    dateFormat: 'yy-mm-dd',
 			    prevText: '이전 달',
@@ -251,6 +290,13 @@
 			    showMonthAfterYear: true,
 			    yearSuffix: '년'
 			});
+			 */
+			 
+			var form = $("form[name=formList]");
+			goList = function(thisPage) {
+				$("input:hidden[name=thisPage]").val(thisPage);
+				form.attr("action", "/member/memberList").submit();
+			}
 		</script>
 	</body>
 </html>

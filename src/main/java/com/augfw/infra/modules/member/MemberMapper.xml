@@ -9,6 +9,7 @@
     <resultMap id="resultMapObj" type="com.augfw.infra.modules.member.Member"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
+		select aa.* from (
 		SELECT
 			seq
 			,id
@@ -34,6 +35,9 @@
 				<otherwise></otherwise>
 			</choose>
 			
+			) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+		
 			</select>
 			
 			<insert id="insert">
@@ -56,5 +60,36 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	<select id = "selectOne" resultMap="resultMapObj">
+		SELECT 
+			a.*
+		FROM ccg
+		WHERE 1=1
+			AND seq = #{seq}
+	</select>	
+	
+	<select id="selectOneCount" resultType = "Integer">
+		SELECT 
+			COUNT(*)
+		FROM member 
+		WHERE 1=1
 
+			<if test="shDelNy !=null and !shDelNy.equals('')">AND resignNy = #{shDelNy}</if>
+			<if test="shValue !=null"></if>
+			
+			<choose>
+				<when test="shOption == 1">AND id LIKE CONCAT('%', #{shValue},'%')</when> <!-- 숫자: = #{shValue} -->
+				<when test="shOption == 2">AND mobile = right(#{shValue},4)</when> <!-- 문자열: LIKE CONTACT('%', #{shValue},'%') -->
+				<when test="shOption == 3">AND name LIKE CONCAT('%', #{shValue},'%')</when>
+
+	
+				<when test="shOptionDate == 1">AND joinDate BETWEEN #{ShDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND dob BETWEEN #{ShDateStart} AND #{shDateEnd}</when>	
+				
+				<otherwise></otherwise>
+				
+			</choose>
+			
+	</select>
+		
 </mapper>	

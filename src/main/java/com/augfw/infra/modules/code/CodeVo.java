@@ -7,6 +7,14 @@ public class CodeVo {
 	private Integer shdelNy;
 	private Integer shCcgCode;
 	
+	private String seq;
+	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public Integer getShOption() {
 		return shOption;
 	}

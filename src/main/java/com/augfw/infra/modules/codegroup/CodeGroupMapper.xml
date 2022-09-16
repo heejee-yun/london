@@ -44,5 +44,13 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
-					
+	
+	<select id = "selectOne" resultMap="resultMapObj">
+		select 
+			a.*
+		from ccg
+		where 1=1
+			and seq = #{seq}
+	</select>		
+			
 </mapper>	

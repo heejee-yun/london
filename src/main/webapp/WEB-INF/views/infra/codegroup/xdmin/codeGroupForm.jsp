@@ -39,7 +39,7 @@
 				<!-- <img src="D:\factory\ws_sts_4151\seoul\image\handsForAdmin.png" style="width: 100%"> -->
 			</div>
 			<!-- ## 검색 블록 ## -->
-			<form method ="post" action ="/codeGroup/codeGroupInt">
+			<form method ="post" action ="/codeGroup/codeGroupInst">
 				<div style="margin: 30px 100px 50px 100px; border: solid 1px; padding: 20px 20px 20px 20px;">
 					<table class="table table-striped table-hover">
 						<tr>
