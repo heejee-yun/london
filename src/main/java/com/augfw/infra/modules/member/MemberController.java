@@ -44,7 +44,7 @@ public class MemberController {
 	
 	@RequestMapping(value="memberForm")
 	public String memberForm(Model model, MemberVo vo) throws Exception{
-		return "infra/code/xdmin/memberForm";
+		return "infra/member/xdmin/memberForm";
 	}
 	
 	@RequestMapping(value="memberInst")
