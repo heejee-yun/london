@@ -19,7 +19,9 @@ public class CodeDao {
 	private SqlSession sqlSession;
 	
 	private static String namespace = "com.augfw.infra.modules.code.CodeMapper";
-	
+
+	/* namespace = "com.augfw.infra.modules.code.CodeMapper" 이기에 
+	 * 앞으로는 namespace만 나와도 저 mmp 주소가 있다고 생각해야함  */
 	public List<Code> selectList(CodeVo vo){ 
 		
 		List<Code> list = sqlSession.selectList("com.augfw.infra.modules.code.CodeMapper.selectList", vo); 
