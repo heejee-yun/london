@@ -53,15 +53,15 @@
 				<div class="row" style="margin-bottom: 20px;">
 					<select class="col-3 form-select" id="shDelNy" name="shDelNy" aria-label="option">
 						<option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제구분</option>
-						<option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
-						<option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
+						<option value="0" <c:if test="${vo.shDelNy eq 0}"></c:if>>N</option>
+						<option value="1" <c:if test="${vo.shDelNy eq 1}"></c:if>>Y</option>
 					</select>	
 						
 					<select class="form-select" name="shOptionDate" id="name="shOptionDate">
 						<option value="" <c:if test="${empty vo.shOptionDate}">selected</c:if>>::날짜::</option>
-						<option value="1" <c:if test="${vo.shOptionDate eq 1}">selected</c:if>>생일</option>
-						<option value="2" <c:if test="${vo.shOptionDate eq 2}">selected</c:if>>가입일</option>
-						<option value="3" <c:if test="${vo.shOptionDate eq 3}">selected</c:if>>탈퇴일</option>
+						<option value="1" <c:if test="${vo.shOptionDate eq 1}"></c:if>>생일</option>
+						<option value="2" <c:if test="${vo.shOptionDate eq 2}"></c:if>>가입일</option>
+						<option value="3" <c:if test="${vo.shOptionDate eq 3}"></c:if>>탈퇴일</option>
 					</select>
 					
 					
@@ -262,7 +262,7 @@
 				</div>
 			</div>
 			<div style="float: right;">
-				<a href="/memeber/xdmin/memeberForm"> <!-- 등록버튼 -->
+				<a href="/member/memberForm"> <!-- 등록버튼 -->
 					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
 				</a>
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
