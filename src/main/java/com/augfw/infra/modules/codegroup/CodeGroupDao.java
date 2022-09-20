@@ -43,6 +43,10 @@ public class CodeGroupDao {
 //	for cache
 	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }
 	
+//	for update	/ uelete /delete
+	public int update(CodeGroup dto) {return sqlSession.update(namespace + ".update", dto);}
+	public int uelete(CodeGroup dto) {return sqlSession.update(namespace + ".uelete", dto);}
+	public int delete(CodeGroupVo vo) {return sqlSession.delete(namespace + ".delete", vo);}
 	
 	
 }

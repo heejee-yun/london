@@ -35,33 +35,29 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
-		System.out.println("vo.getMainKey(): form :" + vo.getMainKey());
-		
-		if (vo.getMainKey().equals("0") || vo.getMainKey().equals("")){
-			// insert
-		} else {
-			CodeGroup item = service.selectOne(vo);
-			model.addAttribute("item", item);
-		}
+		System.out.println("vo.getSeq(): " + vo.getSeq());
+		CodeGroup item = service.selectOne(vo);
+		model.addAttribute("item", item);
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
 	@SuppressWarnings(value = {"all"})
 	@RequestMapping(value = "codeGroupInst")
 	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
-		
+
 		service.insert(dto);
-		
-		vo.setMainKey(dto.getSeq());
+		vo.setSeq(dto.getSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		if (Constants.INSERT_AFTER_TYPE == 1) {
-			return "redirect:/codeGroup/codeGroupList";
+		if(Constants.INSERT_AFTER_TYPE ==1) {
+			return "redirect:/codeGroup/codeGroupForm";
 		} else {
 			return "redirect:/codeGroup/codeGroupList";
 		}
+		
 	}
+	
 	
 	@RequestMapping(value="codeGroupView")
 	public String codeGroupView(CodeGroupVo vo, Model model) throws Exception{
@@ -70,6 +66,20 @@ public class CodeGroupController {
 		return "infra/codegroup/xdmin/codegroupForm";
 	}
 	
+	@RequestMapping(value = "codeGroupDele")
+	public String codeGroupDele(CodeGroupVo vo) throws Exception {
+		int result = service.delete(vo);
+		System.out.println("delete result: " + result);
+		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupUele")
+	public String codeGroupUele(CodeGroup dto) throws Exception {
+		int result = service.uelete(dto);
+		System.out.println("uelete result: "+ result);
+		return "redirect:/codeGroup/codeGroupList";
+		
+	}
 
 	
 }

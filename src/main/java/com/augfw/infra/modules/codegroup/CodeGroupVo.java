@@ -41,6 +41,8 @@ public class CodeGroupVo {
 	public void setShDelNy(String shDelNy) {
 		this.shDelNy = shDelNy;
 	}
+	
+
 
 	
 }

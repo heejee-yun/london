@@ -6,8 +6,21 @@ public class CodeGroup {
 	private Integer orderNy;
 	private String name;
 	private Integer delNy;
+	private Integer useNy;
+	private Integer cgModDate;
 	
-	
+	public Integer getUseNy() {
+		return useNy;
+	}
+	public void setUseNy(Integer useNy) {
+		this.useNy = useNy;
+	}
+	public Integer getCgModDate() {
+		return cgModDate;
+	}
+	public void setCgModDate(Integer cgModDate) {
+		this.cgModDate = cgModDate;
+	}
 	private Integer Check1;
 	private Integer Chekc2;
 	private Integer Radio1;

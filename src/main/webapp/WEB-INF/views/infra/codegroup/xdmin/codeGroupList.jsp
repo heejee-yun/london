@@ -39,7 +39,9 @@
 				<!-- <img src="D:\factory\ws_sts_4151\seoul\image\handsForAdmin.png" style="width: 100%"> -->
 			</div>
 			<!-- ## 검색 블록 ## -->
-			<form method ="post" action ="/codeGroup/codeGroupList">
+<!-- 			<form method ="post" action ="/codeGroup/codeGroupList"> -->
+			<form method="post" name="formList" id="formList">
+						<%@include file="codeGroupVo.jsp" %>
 				<div style="margin: 30px 100px 50px 100px; border: solid 1px; padding: 20px 20px 20px 20px;">
 					<div class="row" style="margin-bottom: 20px;">
 						<select class="col form-select" id="shDelNy" name="shDelNy" style="margin-right: 10px;">
@@ -67,11 +69,13 @@
 					</div>
 			</form>
 			<div class="col-3">
-				<button class="btn btn-warning" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+				<button class="btn btn-warning" type="submit" id="btnSearch">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+				<button class="btn btn-danger" type="button" id="btnReset">
 					<i class="fa-solid fa-rotate-left"></i>
 				</button>
-				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="exampleModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- 				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="exampleModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -87,7 +91,7 @@
 							</div>
 						</div>
 					</div>			
-				</div>
+				</div> -->
 			</div>
 							</div>
 				<!-- ## 테이블 코드 ##  -->
@@ -99,7 +103,9 @@
 				  </th>
 			      <th scope="col">#</th>
 			      <th scope="col">코드그룹코드</th>
-			      <th scope="col">코드그룹 이름(한글)</th>
+			      <th scope="col">코드그룹 한글 이름</th>
+			      <th scope="col">사용여부</th>
+			      <th scope="col">수정일</th>
 			      <th scope="col">코드갯수</th>
 			    </tr>
 			  </thead>
@@ -119,6 +125,8 @@
 			      <td></td>
 			      <td><c:out value="${list.seq }"/></td>
 			      <td><c:out value="${list.name }"/></td>
+			      <td><c:out value="${list.useNy }"/></td>
+			      <td><c:out value="${list.cgModDate }"/></td>
 			      <td></td>
 			    </tr>
 				</c:forEach>
@@ -192,6 +200,42 @@
 		</div>	
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
+    	<script>
+		var goUrlList = "/codeGroup/codeGroupList";
+		var goUrlInst = "/codeGroup/codeGroupInst";
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";
+		var goUrlUele = "/codeGroup/codeGroupUele";
+		var goUrlDele = "/codeGroup/codeGroupDele";
+		var goUrlForm = "/codeGroup/codeGroupForm";
+		
+		var seq = $("input:hidden[name=cgSeq]");
+		
+		var form = $("form[name = formList]");
+		var formVo = $("form[name=formVo]");
+		
+		$("#btnSearch").on("click", function(){
+			form.attr("action", goUrlList).submit();
+		});
+		
+		$("#btnReset").on("click", function(){
+			$(location).attr("href", goUrlList);
+		});
+		
+		goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+		
+		$("#btnForm").on("click", function(){
+			goForm(0);
+		});
+		
+		goForm = function(keyValue){
+			seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
+		
+	</script>
 	</body>
 </html>
 

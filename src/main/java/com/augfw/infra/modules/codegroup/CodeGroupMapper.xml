@@ -48,9 +48,36 @@
 	<select id = "selectOne" resultMap="resultMapObj">
 		select 
 			a.*
-		from ccg
+		from ccg a
 		where 1=1
 			and seq = #{seq}
-	</select>		
+	</select>	
+		
+	<update id="update">
+		UPDATE ccg 
+		SET
+			name = #{name}
+			,useNy = #{useNy}
+			,delNy = #{delNy}
+			,cgModDate = now()
+			<!-- <include refid="Base.updateModColumnValue"/> -->
+		WHERE
+			cgSeq = #{cgSeq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE ccg 
+		SET
+			delNy = 1
+			<!-- <include refid="Base.updateModColumnValue"/> -->
+		WHERE
+			seq = #{seq}
+	
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM ccg WHERE seq = #{seq}
+	
+	</delete>
 			
 </mapper>	
