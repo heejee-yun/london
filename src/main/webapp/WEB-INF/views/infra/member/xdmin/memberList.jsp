@@ -270,7 +270,7 @@
 				</div>
 			</div>
 			<div style="float: right;"> 
-				<a href="/member/memberForm"> <!-- 등록버튼 -->
+				<a href="/member/memberForm">    <!-- 등록버튼 -->
 					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
 				</a>
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
