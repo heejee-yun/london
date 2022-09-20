@@ -39,6 +39,7 @@
 				</ul>
 			</div>
 			<!-- ## 검색 블록 ## -->
+			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
 			<form method ="post" action ="/code/codeList">
 				<div style="margin: 30px 100px 50px 100px; border: solid 1px; padding: 20px 20px 20px 20px;">
 					<div class="row" style="margin-bottom: 20px;">

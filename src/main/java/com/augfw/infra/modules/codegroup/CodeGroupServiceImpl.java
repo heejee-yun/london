@@ -1,9 +1,14 @@
 package com.augfw.infra.modules.codegroup;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.augfw.infra.modules.code.Code;
 
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService{
@@ -37,6 +42,5 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		return result;
 	}
 
-	
-	
+
 }

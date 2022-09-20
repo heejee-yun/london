@@ -40,4 +40,7 @@ public class CodeDao {
 		return result;
 	}
 	
+//	for cache
+	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }
+	
 }

@@ -1,5 +1,8 @@
 package com.augfw.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 	// ccg를 디폴트로 code를 넣는 걸로 
 
@@ -7,8 +10,11 @@ public class Code {
 	private String name;
 	private String codename;
 	private Integer orderNy;
-	private Integer ccg_seq; 
+	private String ccg_seq; 
 	private Integer delNy;
+	
+	
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -33,10 +39,10 @@ public class Code {
 	public void setOrderNy(Integer orderNy) {
 		this.orderNy = orderNy;
 	}
-	public Integer getCcg_seq() {
+	public String getCcg_seq() {
 		return ccg_seq;
 	}
-	public void setCcg_seq(Integer ccg_seq) {
+	public void setCcg_seq(String ccg_seq) {
 		this.ccg_seq = ccg_seq;
 	}
 	public Integer getDelNy() {
@@ -45,7 +51,7 @@ public class Code {
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
 	}
-	
-
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 
 }

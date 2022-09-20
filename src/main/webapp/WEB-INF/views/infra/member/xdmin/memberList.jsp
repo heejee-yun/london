@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-
+<jsp:useBean id="CodeServiceImpl" class="com.augfw.infra.modules.code.CodeServiceImpl"/>
 
 <!doctype html>
 <html lang="en">
@@ -27,6 +27,7 @@
 				</nav>
 			</div>
 			<!--## Tap이 있는 부분 ## -->
+			<form method ="post" action ="/member/memberList" name="formList"> <!-- action-> obj to move -->
 			<form method ="post" action ="/member/memberList" name="formList"> <!-- action-> obj to move -->
 			<input type="hidden" name="mainKey">
 			<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
@@ -139,6 +140,8 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('4')}"/> 
+			  	<c:set var="listCodeSignupPath" value="${CodeServiceImpl.selectListCachedCode('3')}"/> <!-- 그룹 코드 시퀀스 -->
 			  	<c:choose>
 				  <c:when test="${fn:length(list) eq 0}">
 				  	<td class ="text-center" colspan ="13"> 검색 값이 없습니다 </td>
@@ -157,12 +160,17 @@
 						      <td><c:out value="${list.mobile }"/></td>
 						      <td><c:out value="${list.email }"/></td>
 						      <td><c:out value="${list.dob }"/></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						      <td></td>
+						      <td><c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+								<c:if test="${list.gender eq listGender.orderNy}"><c:out value="${listGender.codename }"/></c:if>
+								</c:forEach>
+							  </td>
+						      <td> 추 후 </td>
+						      <td><c:forEach items="${listCodeSignupPath}" var="listSignupPath" varStatus="statusSignupPath">
+								<c:if test="${list.signupPath eq listSignupPath.orderNy}"><c:out value="${listSignupPath.codename }"/></c:if>
+								</c:forEach> </td>
+						      <td><c:out value="${list.goal }"/></td>
+						      <td><c:out value="${list.joinDate }"/></td>
+						      <td><c:out value="${list.resignDate }"/></td>
 						    </tr>
 					    </c:forEach>
 				   </c:otherwise>
@@ -267,6 +275,7 @@
 				</a>
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
 			</div>
+			
 		</form>
 		</div>	
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

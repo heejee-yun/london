@@ -9,7 +9,52 @@ public class Member {
 	private String mobile;
 	private String email;
 	private String dob;
+	private Integer gender;
+	private Integer signupPath;
+	private String goal;
+	private String joinDate;
+	private String resignDate;
+	private Integer resignNy;
 	
+	
+	
+	
+	public Integer getSignupPath() {
+		return signupPath;
+	}
+	public void setSignupPath(Integer signupPath) {
+		this.signupPath = signupPath;
+	}
+	public String getGoal() {
+		return goal;
+	}
+	public void setGoal(String goal) {
+		this.goal = goal;
+	}
+	public String getJoinDate() {
+		return joinDate;
+	}
+	public void setJoinDate(String joinDate) {
+		this.joinDate = joinDate;
+	}
+	public String getResignDate() {
+		return resignDate;
+	}
+	public void setResignDate(String resignDate) {
+		this.resignDate = resignDate;
+	}
+	public Integer getResignNy() {
+		return resignNy;
+	}
+	public void setResignNy(Integer resignNy) {
+		this.resignNy = resignNy;
+	}
+	public Integer getGender() {
+		return gender;
+	}
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
 	public String getSeq() {
 		return seq;
 	}

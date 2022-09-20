@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.augfw.infra.modules.codegroup.CodeGroup;
-import com.augfw.infra.modules.codegroup.CodeGroupVo;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -40,7 +38,8 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println("service result: " + result);
 		return result;
 	}
- 	
+	
+
 	
 }
 

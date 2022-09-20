@@ -18,6 +18,12 @@
 		,mobile
 		,email
 		,dob
+		,gender
+		,level
+		,signupPath
+		,goal
+		,joinDate
+		,resignDate
 		FROM member
 		WHERE
 		1=1

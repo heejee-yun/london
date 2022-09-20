@@ -8,8 +8,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.augfw.infra.modules.codegroup.CodeGroup;
-import com.augfw.infra.modules.codegroup.CodeGroupVo;
 
 
 @Repository
@@ -44,6 +42,7 @@ public class MemberDao {
 		return result;
 	}
 
+	
 }
 
 
