@@ -266,7 +266,7 @@
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">뒤로가기</button>
 							</div>
 						</div>
-					</div>
+					</div>   
 				</div>
 			</div>
 			<div style="float: right;"> 
