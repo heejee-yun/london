@@ -52,6 +52,7 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.*

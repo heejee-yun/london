@@ -4,6 +4,7 @@ import com.augfw.infra.constants.Constants;
 	
 	
 public class MemberVo {
+	private String seq;
 	private Integer shOption;
 	private String shValue;
 	private String shDelNy;
@@ -30,11 +31,12 @@ public class MemberVo {
 	
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 	
-	
-	
-	
-	
-	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public int getThisPage() {
 		return thisPage;
 	}

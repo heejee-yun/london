@@ -4,13 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.test.context.jdbc.SqlMergeMode;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.augfw.infra.modules.codegroup.CodeGroup;
-import com.augfw.infra.modules.codegroup.CodeGroupVo;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -43,17 +40,24 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="memberForm")
-	public String memberForm(Model model, MemberVo vo) throws Exception{
+	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
+		
+		Member result = service.selectOne(vo);
+		model.addAttribute("item", result);
 		return "infra/member/xdmin/memberForm";
 	}
 	
-	@RequestMapping(value="memberInst")
-	public String memberInst(Member dto) throws Exception{
+	@RequestMapping(value = "memberInst")
+	public String codeInst(Member vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.insert(dto);
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		vo.setSeq(dto.getSeq());
 		
-		return "redirect:/member/memberList";
+		redirectAttributes.addFlashAttribute("vo", vo);
+
+		return "infra/member/xdmin/memberForm";
+
 	}
 	
 	@RequestMapping(value="memberView")

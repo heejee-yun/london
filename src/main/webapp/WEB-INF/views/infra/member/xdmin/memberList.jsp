@@ -28,8 +28,7 @@
 			</div>
 			<!--## Tap이 있는 부분 ## -->
 			<form method ="post" action ="/member/memberList" name="formList"> <!-- action-> obj to move -->
-			<form method ="post" action ="/member/memberList" name="formList"> <!-- action-> obj to move -->
-			<input type="hidden" name="mainKey">
+			<input type="hidden" name="seq">
 			<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 			<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 			<input type="hidden" name="checkboxSeqArray">
@@ -155,7 +154,7 @@
 								</div>
 						      </td>
 						      <td><c:out value="${list.seq }"/></td>
-						      <td><c:out value="${list.name }"/></td>
+						      <td><a href="javascript:goForm(<c:out value="${list.seq}"/>)"><c:out value="${list.name }"/></a></td>
 						      <td><c:out value="${list.id }"/></td>
 						      <td><c:out value="${list.mobile }"/></td>
 						      <td><c:out value="${list.email }"/></td>
@@ -300,7 +299,41 @@
 			    yearSuffix: '년'
 			});
 			 */
-			 
+			
+			 var goUrlList = "/member/memberList";				// var: 변수 선언 예약어			/* #-> */
+				var goUrlInst = "/member/memberInst"; 			/* #-> */
+				var goUrlUpdt = "/member/memberUpdt";				/* #-> */
+				var goUrlUele = "/member/memberUele";				/* #-> */
+				var goUrlDele = "/member/memberDele";
+				var goUrlForm = "/member/memberForm";/* #-> */
+
+				var form = $("form[name=form]");
+
+				var seq = $("input:hidden[name=seq]");
+				
+				$('#btnForm').on("click", function() {
+					goForm(0);                
+				});
+
+				$("#btnSearch").on("click", function(){
+					form.attr("action", goUrlList).submit();
+				});
+
+				$("#btnReset").on("click", function(){
+					$(location).attr("href", goUrlList);
+				});
+				
+				goForm = function(keyValue) {
+			    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+			    	seq.val(keyValue);
+			    	form.attr("action", goUrlForm).submit();
+				}
+
+			 	goList = function(thisPage){
+					$("input:hidden[name=thisPage]").val(thisPage);
+					form.attr("action", goUrlList).submit();
+				}
+			 	
 			var form = $("form[name=formList]");
 			goList = function(thisPage) {
 				$("input:hidden[name=thisPage]").val(thisPage);

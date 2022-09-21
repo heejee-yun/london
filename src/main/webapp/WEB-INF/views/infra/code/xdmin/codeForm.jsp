@@ -44,7 +44,7 @@
 					<table class="table table-striped table-hover">
 						<tr>
 							<td>seq</td>
-							<td><input type="text"class="form-control" name="ccg_seq" placeholder="입력하시오"></td>
+							<td><input type="text" name="ccg_seq" class="form-control"  placeholder="입력하시오"></td>
 						</tr>
 						<tr>
 							<td>코드표시순서</td>
@@ -56,10 +56,11 @@
 						</tr>
 						<tr>
 							<td>삭제여부</td>
-							<td><input type="text" name="" class="form-control" placeholder="자동입력됩니다(N 디폴트)"></td>
+							<td><input type="text" name="delNy" class="form-control" placeholder="자동입력됩니다(N 디폴트)"></td>
 						</tr>
 					</table>
 				</div>
+				
 			<div class="col-3">
 				<button class="btn btn-warning" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -131,11 +132,13 @@
 				</a>
 					<button class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></button>
 			</div>
-		</form>	
+		</form>
 		</div>	
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
-    	    	<script type="text/javascript">
+    	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    	<script type="text/javascript">  // 아래에는 자바 스크립트 부분만 써야함
     		function test(){
     			
     			alert("입력해주셔서 감사합니다");
@@ -154,6 +157,8 @@
     			return false;
     			}
     		}
+
     	</script>
+    	
 	</body>
 </html>

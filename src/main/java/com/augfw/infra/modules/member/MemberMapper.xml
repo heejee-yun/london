@@ -8,23 +8,10 @@
 
 	<resultMap id="resultMapObj"
 		type="com.augfw.infra.modules.member.Member"></resultMap>
-
-	<select id="selectList" resultMap="resultMapObj">
-		select aa.* from (
-		SELECT
-		seq
-		,id
-		,name
-		,mobile
-		,email
-		,dob
-		,gender
-		,level
-		,signupPath
-		,goal
-		,joinDate
-		,resignDate
-		FROM member
+	
+	<sql id="selectCommon" >
+	
+	FROM member
 		WHERE
 		1=1
 
@@ -44,37 +31,62 @@
 
 			<otherwise></otherwise>
 		</choose>
-
-		) aa
-		limit #{rowNumToShow} offset #{startRnumForMysql}
-
-	</select>
-
-	<insert id="insert">
-		INSERT INTO member(
-		id
+	
+	</sql>
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+<!-- 	
+		select aa.* from (
+ -->		
+		SELECT
+		seq
+		,id
 		,name
 		,mobile
 		,email
 		,dob
+		,gender
+		,level
+		,signupPath
+		,goal
+		,joinDate
+		,resignDate
+		
+<!-- 
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+ -->
+ 		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+
+	<insert id="insert">
+		INSERT INTO member(
+			id
+			,pw
+			,name
+			,mobile
+			,email
+			,dob
 		)
 		VALUES(
-		#{id}
-		,#{name}
-		,#{mobile}
-		,#{email}
-		,#{dob}
+			#{id}
+			,#{pw}
+			,#{name}
+			,#{mobile}
+			,#{email}
+			,#{dob}
 		)
 
-		<selectKey resultType="String" keyProperty="seq"
-			order="AFTER">
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-		a.*
-		FROM ccg
+		*
+		FROM member
 		WHERE 1=1
 		AND
 		seq = #{seq}
