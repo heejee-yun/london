@@ -248,7 +248,7 @@
 						</div>
 					</div>
 				</div>
-				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btnDele">
 					<i class="fa-solid fa-trash-can">삭제</i>
 				</button>
 				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -321,6 +321,10 @@
 
 				$("#btnReset").on("click", function(){
 					$(location).attr("href", goUrlList);
+				});
+				
+				$("#btnDele").on("click", function(){
+					$(location).attr("href", goUrlDele);
 				});
 				
 				goForm = function(keyValue) {

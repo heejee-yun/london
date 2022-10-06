@@ -60,6 +60,12 @@ public class CodeController {
 		return "infra/code/xdmin/codeForm";
 	}
 	
+	@RequestMapping(value="home")
+	public String home(CodeVo vo, Model model) throws Exception{
+		return "infra/home/home";
+	}
+	
+	
 	
 	
 	
