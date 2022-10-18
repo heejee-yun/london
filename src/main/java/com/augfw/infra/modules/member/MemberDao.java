@@ -43,6 +43,12 @@ public class MemberDao {
 	}
 
 	
+	public int delete(MemberVo vo) { 
+		return sqlSession.delete(namespace + ".delete", vo); }
+
+	
+	
+	
 }
 
 

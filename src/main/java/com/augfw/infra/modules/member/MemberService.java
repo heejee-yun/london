@@ -8,4 +8,6 @@ public interface MemberService {
 	public int insert(Member dto) throws Exception;
 	public Member selectOne(MemberVo vo) throws Exception;
 	public int selectOneCount(MemberVo vo) throws Exception;
+	int delete(MemberVo vo) throws Exception;
+	
 }

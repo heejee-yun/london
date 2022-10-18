@@ -67,6 +67,15 @@ public class MemberController {
 		return "infra/member/xdmin/memeberForm";
 	}
 	
+	@RequestMapping(value = "memberDele")
+	public String memberDele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.delete(vo);
+
+		redirectAttributes.addFlashAttribute("vo", vo);
+
+		return "redirect:/member/memberList";
+	}
 
 
 	

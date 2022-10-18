@@ -39,7 +39,10 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 	
-
+	@Override
+	public int delete(MemberVo vo) throws Exception {
+		return dao.delete(vo);
+	}
 	
 }
 
