@@ -6,199 +6,312 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>CodeList</title>
-    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    	<link rel="shortcut icon" href="D:\factory\ws_sts_4151\seoul\image\logo2\logo_16px.png">
-  		<!-- 위에 <link 부분 없으면  Bootstrap  부분 적용 불가함. Favicon 적용 방법 다시 찾기  -->
-  		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>ZIpCodeGroup</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<link rel="stylesheet" href="/resources/css/xdmin/codeGroup/codeGroupList.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	</head>
-	<body> <!-- ######## 개인 프로젝트 회원관리 페이지 만드는데, 검색, 삭제 후가 가능하게 구현하기 / 모달 넣기 ######## -->
-		<div class="container"> 
-			<div class="Navbar">
-				<nav class="navbar navbar-expand-lg" style="background-color: #F6E58D;">
-					<a class="navbar-brand" href="#"><img src="/resources/images/logo_nobg.png" width="200px"></a>
-				</nav>
-			</div>
-			<!--## Tap이 있는 부분 ## -->
-			<H3>CodeList</H3>
-			<div class="tap">
-				<ul class="nav nav-tabs">
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="D:\factory\ws_sts_4151\seoul\public\toDoIt\dmin\codegroup.html">코드그룹관리</a>
-					</li>
-					<li class="nav-link active">
-						<a class="nav-link" href="D:\factory\ws_sts_4151\seoul\public\toDoIt\dmin\code.html">코드관리</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">회원관리</a>
-					</li>
-				</ul>
-			</div>
-			<!-- ## 검색 블록 ## -->
-			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
-			<form method ="post" action ="/code/codeList">
-				<div style="margin: 30px 100px 50px 100px; border: solid 1px; padding: 20px 20px 20px 20px;">
-					<div class="row" style="margin-bottom: 20px;">
-						<select class="col-3 form-select" id="shdelNy" name="shdelNy" aria-label="option">
-								<option value="" <c:if test="${empty vo.shdelNy}">selected</c:if>>삭제구분</option>
-								<option value="0" <c:if test="${vo.shdelNy eq 0}">selected</c:if>>N</option>
-								<option value="1" <c:if test="${vo.shdelNy eq 1}">selected</c:if>>Y</option>
-						</select>		
-					</div>
-						<div class="row">
-							<select class="col form-select" id="shOption" name="shOption" style="margin-right: 10px;">
-								<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
-								<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 Seq</option>
-								<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
-								<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드 차순</option>
-								<option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>코드 이름</option>
-								<option value="5" <c:if test="${vo.shOption eq 5}">selected</c:if>>코드 Seq</option>
-							</select>	
-							<div class="col-7" >
-								<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"class="form-control" placeholder="search" aria-label="Recipient's username with two button addons">
+	
+	<body>
+		<!-- start -->
+		<header>
+			<div class="header bg-dark">
+				<div class="container">
+					<div class="row">
+						<nav class="navbar col" style="padding-bottom : 0px;">
+							<div class="col">
+								<a class="navbar-brand">
+									<img src="/resources/images/main/logo2.png" style="width: 80px;">
+									<span class="text-white" id="MATZIP">MATZIP</span>
+								</a>
 							</div>
-						</div>
-					
-						<div class="col-2">
-							<button class="btn btn-warning" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-							<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-								<i class="fa-solid fa-rotate-left"></i>
-							</button>
-							<div class="modal fade" id="staticBackdrop" data-bs-backdrop="exampleModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel">취소</h5>
-											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							<div class="row offset-5">
+								<div class="userimg col">
+									<img alt="" src="../resources/image/user.png" style=" width: 60px; height: 40px;border-radius: 100px;" class="me-4 mb-4 ">
+									<span id="MATZIP" class="d-inline-block text-white">Tony Chang <br> Administrator</span>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="bg-dark">
+					<div class="container">
+						<nav class="navbar navbar-expand-lg">
+							<div class="collapse navbar-collapse" id="navbar" style="padding-left: 350px;">
+								<div class="navbar-nav">
+									<a class="nav-link active text-white me-3" aria-current="page" href="#">Code</a>
+									<a class="nav-link text-white me-3" href="#">회원관리</a>
+									<a class="nav-link text-white me-3" href="#">사장님관리</a>
+									<a class="nav-link text-white me-3" href="#">매장관리</a>
+									<a class="nav-link text-white me-3" href="#">story관리</a>
+									<a class="nav-link text-white" href="#">시스템관리</a>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<form id="myForm" name="myForm" method="post">
+			<%-- 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+				<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+				<input type="hidden" name="ccgSeq" value='<c:out value="${vo.ccgSeq }"></c:out>'> --%>
+				<div style="height: 55px"></div>
+				<div class="wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-3">
+								<div class="sidebar mt-3">
+									<!--menu item-->
+									<ul>
+										<li>
+											<a href="#" class="active">
+												<span class="icon"><i class="fas fa-home" style="color: black;"></i></span>
+												<span class="item" style="color: black;" id="sidebar">Home</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="icon"><i class="fas fa-desktop"></i></span>
+												<span class="item" style="color: black;" id="sidebar">Dashboard</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="icon"><i class="fas fa-user-friends"></i></span>
+												<span class="item" style="color: black;" id="sidebar">Orders</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+												<span class="item" style="color: black;" id="sidebar">Account</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col mt-3">
+								<div class="content">
+									<h2 class="row needs-validation ms-3 mt-5">CodeGroup List</h2>
+									<div class="row needs-validation ms-3 me-3 mt-3 mb-5 p-3 bg-dark rounded" id="selecBox" novalidate>
+										<div class="row mb-2">
+											<div class="col-md-3">
+												<select class="form-select" id="shDelNy" name="shDelNy">
+			                                       	<%-- <option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
+			                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+			                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option> --%>
+			                                        <option value=""> 선택</option>
+			                                    </select>
+											</div>
+											<div class="col-md-3">
+												<select class="form-select" id="shUpdt" name="shUpdt">
+			                                        <option value=""> 선택</option>
+<%-- 													<option value="" <c:if test="${empty vo.shUpdt }">selected</c:if>>선택</option>
+													<option value="1" <c:if test="${vo.shUpdt eq 1 }">selected</c:if>>등록일</option>
+													<option value="2" <c:if test="${vo.shUpdt eq 2 }">selected</c:if>>수정일</option> --%>
+												</select>
+											</div>
+											<div class="col-md-3">
+												<input type="text" class="form-control" id="datepickerS" placeholder="시작일">
+											</div>
+											<div class="col-md-3">
+												<input type="text" class="form-control" id="datepickerE" placeholder="종료일">
+											</div>
 										</div>
-										<div class="modal-body">
-											정말 취소하시겠습니까? 
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">돌아가기</button>
-		        							<button type="button" class="btn btn-primary">취소</button>
+										<div class="row">
+											<div class="col-md-3">
+												<select class="form-select" id="shOption" name="shOption">
+			                                        <option value=""> 선택</option>
+			                                        <%-- <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색구분</option>
+			                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 코드</option>
+			                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름(한글)</option>
+			                                        <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 이름(영문)</option> --%>
+			                                    </select>
+											</div>
+											<div class="col-md-3">
+												<input type="text" class="form-control" name="shValue" id="shValue" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
+												<div class="invalid-feedback" id="shValueFeeback"></div>
+											</div>
+											<div class="col-md-2">
+												<button class="btn btn-warning" type="submit" id="searching"><i class="fa-solid fa-magnifying-glass"></i></button>
+												<button class="btn btn-danger" type="reset" id="btnReset" name="btnReset"><i class="fa-solid fa-rotate-right"></i></button>
+											</div>
 										</div>
 									</div>
+									<span class="ms-3 mt-5" id="Total">Total: </span>
+									<div class="ms-3 me-3 mt-3 mb-4 shadow-lg bg-body rounded">
+										<table class="table table-striped table-hover text-center" id="selecBox">
+											<thead>
+												<tr class="bg-dark">
+													<th scope="col">
+														<input type="checkbox" name="chk_all" id="chk_all" href="">
+													</th>
+													<th class="text-white">#</th>
+													<th class="td1 text-white" scope="col">코드그룹 코드</th>
+													<th class="td2 text-white" scope="col">코드그룹 이름(한글)</th>
+													<th class="td3 text-white" scope="col">코드그룹 이름(영문)</th>
+													<th class="td4 text-white" scope="col">기타</th>
+													<th class="td5 text-white" scope="col">기타2</th>
+												</tr>
+											</thead>
+											<tbody>
+												<%-- <c:choose>
+													<c:when test="${fn:length(list) eq 0}">
+														<tr>
+															<td class="text-center" colspan="7">There is no data!</td>
+														</tr>
+													</c:when>
+													<c:otherwise>		
+														<c:forEach items="${list}" var="list" varStatus="status">
+															<tr onclick="newPage()" class="info">
+																<th scope="row" class="td1" src="./memberMod.html">
+																	<input type="checkbox" name="chk_box" onclick="checkSelectAll(this)">
+																</th>
+																<td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
+																<td>${list.ccgSeq}</td>
+																<td><a href="javascript:goForm(<c:out value="${list.ccgSeq }"/>)" class="text-decoration-none"><c:out value="${list.name }"/></a></td>
+																<td>${list.name_eng}</td>
+																<td>${list.count}</td>
+																<td>-</td>
+																<td>-</td>
+															</tr>
+														</c:forEach>
+													</c:otherwise>
+												</c:choose> --%>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+											</tbody>
+										</table>
+										<%-- <%@include file="../../common/xdmin/includeV1/pagination.jsp"%> --%>
+									</div>
+									<div class="row align-items-center m-2">
+			                            <div class="col-2">
+			                                <button class="border-0 btn shadow" type="button" data-bs-toggle="modal"
+			                                    data-bs-target="#deleteModal">
+			                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
+			                                </button>
+			                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
+			                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			                                    <div class="modal-dialog">
+			                                        <div class="modal-content">
+			                                            <div class="modal-header">
+			                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
+			                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+			                                                    aria-label="Close"></button>
+			                                            </div>
+			                                            <div class="modal-body fs-6">
+			                                                선택하신 게시물을 정말로 삭제하시겠습니까?
+			                                            </div>
+			                                            <div class="modal-footer">
+			                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			                                                <button type="button" class="btn btn-primary">삭제</button>
+			                                            </div>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <button class="border-0 btn btn-danger shadow" type="button" data-bs-toggle="modal"
+			                                    data-bs-target="#deleteModal">
+			                                    <i class="fa-solid fa-xmark"></i>
+			                                </button>
+			                            </div>
+			                            <div class="col-2 offset-8" align="right">
+			                                <button class="border-0 btn bg-success shadow" type="button" data-bs-toggle="modal"
+			                                    data-bs-target="#deleteModal">
+			                                    <i class="fa-regular fa-file-excel" style="color: white;"></i>
+			                                </button>
+			                                <a class="border-0 btn shadow bg-primary" role="button" id="btnForm">
+			                                    <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
+			                                </a>
+			                            </div>
+			                        </div>
 								</div>
-							</div>			
-						</div>
-					</div>
-				</form>
-				<!-- ## 테이블 코드 ##  -->
-	    	<table class="table table-striped table-hover">
-			  <thead class="table-dark"> 
-			    <tr>
-				  <th>
-			 		<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-				  </th>
-			      <th scope="col">#</th>
-			      <th scope="col">코드그룹코드</th>
-			      <th scope="col">코드그룹 이름(한글)</th>
-			      <th scope="col">코드</th>
-			      <th scope="col">코드표시순서</th>
-			      <th scope="col">코드 이름(한글)</th>
-			      <th scope="col">등록일</th>
-			      <th scope="col">수정일</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  <c:choose>
-			  <c:when test="${fn:length(list) eq 0}">
-			  <td class ="text-center" colspan ="8"> 검색 값이 없습니다 </td>
-			  </c:when>
-			  <c:otherwise>
-				<c:forEach items="${list}" var="list" varStatus="status">	
-			    <tr>
-			      <td>
-			      	<div>
-	 					<input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-					</div>
-			      </td>
-			      <td><c:out value="${list.seq }"/></td>
-			      <td><c:out value="${list.ccg_seq }"/></td>
-			      <td><c:out value="${list.name }"/></td>
-			      <td></td>
-			      <td><c:out value="${list.orderNy }"/></td>
-			      <td><c:out value="${list.codename }"/></td>
-			      <td></td>
-			      <td></td>
-			    </tr>
-				</c:forEach>
-				</c:otherwise>
-				</c:choose>
-			  </tbody>
-			</table>
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination justify-content-center">
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
-			    <li class="page-item">
-			      <a class="page-link" href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-			<div style="float: left;">
-				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-					<i class="fa-solid fa-rotate-left">취소</i>
-				</button>
-				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="staticBackdropLabel">취소</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-							취소되었습니다. 아래 '뒤로가기' 버튼을 눌러주세요.
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">뒤로가기</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-					<i class="fa-solid fa-trash-can">삭제</i>
-				</button>
-				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="staticBackdropLabel">삭제</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-							삭제되었습니다. 아래 '뒤로가기' 버튼을 눌러주세요.
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">뒤로가기</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div style="float: right;">
-				<a href="/code/codeForm"> <!-- 등록버튼 -->
-					<button class="btn btn-success me-md-2" type="button"><i class="fa-solid fa-clipboard-list"></i></button>
-				</a>
-				<button class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></button>
-			</div>
-		</div>	
-		</form>
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
-    	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+			</form>
+			<footer>
+		        <div class="footer">
+		            <div class="footer_inner">
+		                <!--[주]고객센터,제휴문의,서비스안내-->
+		                <ul class="footer_link" id="footer_link">
+		                    <li><a target="_blank" class="footer_item" href="#"
+		                            id="fot.agreement"><span class="text">이용약관</span></a></li>
+		                    <li><a target="_blank" class="footer_item" href="#l"
+		                            id="fot.privacy"><span class="text"><strong>개인정보처리방침</strong></span></a></li>
+		                    <li><a target="_blank" class="footer_item" href="#"
+		                            id="fot.disclaimer"><span class="text">책임의 한계와 법적고지</span></a></li>
+		                    <li><a target="_blank" class="footer_item"
+		                            href="#" id="fot.help"><span
+		                                class="text">회원정보 고객센터</span></a></li>
+		                </ul>
+		                <div class="footer_copy">
+		                    <a  id="fot.naver" target="_blank" href="https://www.navercorp.com">
+		                        <img class="bg-dark" src="/resources/images/main/logo2.png" alt="logo" style="width: 45px;">
+		                    </a>
+		                    <span class="text">Copyright</span>
+		                    <span class="corp">© MATZIP Corp.</span>
+		                    <span class="text">All Rights Reserved.</span>
+		                </div>
+		            </div>
+		        </div>
+		    </footer>
+		</main>
+	
+		<!-- end --> 
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/a33686bef4.js" crossorigin="anonymous"></script>
+		<script>
+		
+		var goUrlList = "/codeGroup/codeGroupList"; 
+		var goUrlInst = "/codeGroup/codeGroupInst";
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";	
+		var goUrlUele = "/codeGroup/codeGroupUele";	
+		var goUrlDele = "/codeGroup/codeGroupDele";	
+		var goUrlForm = "/codeGroup/codeGroupForm";
+		
+		var form = $("form[name=myForm]");
+		
+		var ccgSeq = $("input:hidden[name=ccgSeq]");
+		
+		
+		 $("#btnReset").on("click", function(){
+			 $(location).attr("href", goUrlList);
+		 });
+		 
+		// 페이지 네이션 만들기
+		 goList = function(thisPage) {
+ 			$("input:hidden[name=thisPage]").val(thisPage);
+ 			form.attr("action", goUrlList).submit();
+ 		};
+ 		
+ 		/* var seq = $("input:hidden[name=ccgSeq]"); */
+
+ 		
+ 		$('#btnForm').on("click", function() {
+ 			goForm(0);                
+ 		});
+
+ 		goForm = function(keyValue) {
+ 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+ 	    	ccgSeq.val(keyValue);
+ 			form.attr("action", goUrlForm).submit();
+ 		}
+		
+		</script>
 	</body>
 </html>

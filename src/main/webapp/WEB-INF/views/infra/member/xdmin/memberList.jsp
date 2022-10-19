@@ -248,9 +248,8 @@
 						</div>
 					</div>
 				</div>
-				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btnDele">
-					<i class="fa-solid fa-trash-can">삭제</i>
-				</button>
+				<button type="button" class="btn btn-danger btn-sm" name="" id="btnDelete"><i class="fa-solid fa-x">삭제</i></button>
+				
 				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -323,9 +322,27 @@
 					$(location).attr("href", goUrlList);
 				});
 				
-				$("#btnDele").on("click", function(){
+/* 				$("#btnDele").on("click", function(){
 					$(location).attr("href", goUrlDele);
+				}); */
+				
+				
+				
+				$("#btnDelete").on("click", function(){
+					if($("input[name=checkboxSeq]:checked").length > 0 ) {
+						$("input:hidden[name=exDeleteType]").val(2);
+						$(".modal-title").text("확 인");
+						$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+						$("#btnModalUelete").hide();
+						$("#btnModalDelete").show();
+						$("#modalConfirm").modal("show");
+					} else {
+						$(".modal-title").text("확 인");
+						$(".modal-body").text("데이터를 선택해 주세요!");
+						$("#modalAlert").modal("show");
+					}
 				});
+				
 				
 				goForm = function(keyValue) {
 			    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
