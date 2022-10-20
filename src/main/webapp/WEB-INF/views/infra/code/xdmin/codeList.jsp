@@ -5,313 +5,234 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.augfw.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>ZIpCodeGroup</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-		<link rel="stylesheet" href="/resources/css/xdmin/codeGroup/codeGroupList.css">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<title>Member list</title>
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    	<link rel="shortcut icon" href="D:\factory\ws_sts_4151\seoul\image\logo2\logo_16px.png">
+  		<style type="text/css">
+/*   			th {
+  				container-fluid d-grid col-6 mx-auto
+  			} */
+  		</style>
 	</head>
-	
-	<body>
-		<!-- start -->
-		<header>
-			<div class="header bg-dark">
-				<div class="container">
-					<div class="row">
-						<nav class="navbar col" style="padding-bottom : 0px;">
-							<div class="col">
-								<a class="navbar-brand">
-									<img src="/resources/images/main/logo2.png" style="width: 80px;">
-									<span class="text-white" id="MATZIP">MATZIP</span>
-								</a>
-							</div>
-							<div class="row offset-5">
-								<div class="userimg col">
-									<img alt="" src="../resources/image/user.png" style=" width: 60px; height: 40px;border-radius: 100px;" class="me-4 mb-4 ">
-									<span id="MATZIP" class="d-inline-block text-white">Tony Chang <br> Administrator</span>
-								</div>
-							</div>
-						</nav>
-					</div>
-				</div>
-				<div class="bg-dark">
-					<div class="container">
-						<nav class="navbar navbar-expand-lg">
-							<div class="collapse navbar-collapse" id="navbar" style="padding-left: 350px;">
-								<div class="navbar-nav">
-									<a class="nav-link active text-white me-3" aria-current="page" href="#">Code</a>
-									<a class="nav-link text-white me-3" href="#">회원관리</a>
-									<a class="nav-link text-white me-3" href="#">사장님관리</a>
-									<a class="nav-link text-white me-3" href="#">매장관리</a>
-									<a class="nav-link text-white me-3" href="#">story관리</a>
-									<a class="nav-link text-white" href="#">시스템관리</a>
-								</div>
-							</div>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</header>
-		<main>
-			<form id="myForm" name="myForm" method="post">
-			<%-- 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-				<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-				<input type="hidden" name="ccgSeq" value='<c:out value="${vo.ccgSeq }"></c:out>'> --%>
-				<div style="height: 55px"></div>
-				<div class="wrapper">
-					<div class="container">
-						<div class="row">
-							<div class="col-3">
-								<div class="sidebar mt-3">
-									<!--menu item-->
-									<ul>
-										<li>
-											<a href="#" class="active">
-												<span class="icon"><i class="fas fa-home" style="color: black;"></i></span>
-												<span class="item" style="color: black;" id="sidebar">Home</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<span class="icon"><i class="fas fa-desktop"></i></span>
-												<span class="item" style="color: black;" id="sidebar">Dashboard</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<span class="icon"><i class="fas fa-user-friends"></i></span>
-												<span class="item" style="color: black;" id="sidebar">Orders</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
-												<span class="item" style="color: black;" id="sidebar">Account</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="col mt-3">
-								<div class="content">
-									<h2 class="row needs-validation ms-3 mt-5">CodeGroup List</h2>
-									<div class="row needs-validation ms-3 me-3 mt-3 mb-5 p-3 bg-dark rounded" id="selecBox" novalidate>
-										<div class="row mb-2">
-											<div class="col-md-3">
-												<select class="form-select" id="shDelNy" name="shDelNy">
-			                                       	<%-- <option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
-			                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
-			                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option> --%>
-			                                        <option value=""> 선택</option>
-			                                    </select>
-											</div>
-											<div class="col-md-3">
-												<select class="form-select" id="shUpdt" name="shUpdt">
-			                                        <option value=""> 선택</option>
-<%-- 													<option value="" <c:if test="${empty vo.shUpdt }">selected</c:if>>선택</option>
-													<option value="1" <c:if test="${vo.shUpdt eq 1 }">selected</c:if>>등록일</option>
-													<option value="2" <c:if test="${vo.shUpdt eq 2 }">selected</c:if>>수정일</option> --%>
-												</select>
-											</div>
-											<div class="col-md-3">
-												<input type="text" class="form-control" id="datepickerS" placeholder="시작일">
-											</div>
-											<div class="col-md-3">
-												<input type="text" class="form-control" id="datepickerE" placeholder="종료일">
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-3">
-												<select class="form-select" id="shOption" name="shOption">
-			                                        <option value=""> 선택</option>
-			                                        <%-- <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>검색구분</option>
-			                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 코드</option>
-			                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름(한글)</option>
-			                                        <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 이름(영문)</option> --%>
-			                                    </select>
-											</div>
-											<div class="col-md-3">
-												<input type="text" class="form-control" name="shValue" id="shValue" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
-												<div class="invalid-feedback" id="shValueFeeback"></div>
-											</div>
-											<div class="col-md-2">
-												<button class="btn btn-warning" type="submit" id="searching"><i class="fa-solid fa-magnifying-glass"></i></button>
-												<button class="btn btn-danger" type="reset" id="btnReset" name="btnReset"><i class="fa-solid fa-rotate-right"></i></button>
-											</div>
-										</div>
-									</div>
-									<span class="ms-3 mt-5" id="Total">Total: </span>
-									<div class="ms-3 me-3 mt-3 mb-4 shadow-lg bg-body rounded">
-										<table class="table table-striped table-hover text-center" id="selecBox">
-											<thead>
-												<tr class="bg-dark">
-													<th scope="col">
-														<input type="checkbox" name="chk_all" id="chk_all" href="">
-													</th>
-													<th class="text-white">#</th>
-													<th class="td1 text-white" scope="col">코드그룹 코드</th>
-													<th class="td2 text-white" scope="col">코드그룹 이름(한글)</th>
-													<th class="td3 text-white" scope="col">코드그룹 이름(영문)</th>
-													<th class="td4 text-white" scope="col">기타</th>
-													<th class="td5 text-white" scope="col">기타2</th>
-												</tr>
-											</thead>
-											<tbody>
-												<%-- <c:choose>
-													<c:when test="${fn:length(list) eq 0}">
-														<tr>
-															<td class="text-center" colspan="7">There is no data!</td>
-														</tr>
-													</c:when>
-													<c:otherwise>		
-														<c:forEach items="${list}" var="list" varStatus="status">
-															<tr onclick="newPage()" class="info">
-																<th scope="row" class="td1" src="./memberMod.html">
-																	<input type="checkbox" name="chk_box" onclick="checkSelectAll(this)">
-																</th>
-																<td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
-																<td>${list.ccgSeq}</td>
-																<td><a href="javascript:goForm(<c:out value="${list.ccgSeq }"/>)" class="text-decoration-none"><c:out value="${list.name }"/></a></td>
-																<td>${list.name_eng}</td>
-																<td>${list.count}</td>
-																<td>-</td>
-																<td>-</td>
-															</tr>
-														</c:forEach>
-													</c:otherwise>
-												</c:choose> --%>
-												<td>-</td>
-												<td>-</td>
-												<td>-</td>
-												<td>-</td>
-												<td>-</td>
-												<td>-</td>
-												<td>-</td>
-											</tbody>
-										</table>
-										<%-- <%@include file="../../common/xdmin/includeV1/pagination.jsp"%> --%>
-									</div>
-									<div class="row align-items-center m-2">
-			                            <div class="col-2">
-			                                <button class="border-0 btn shadow" type="button" data-bs-toggle="modal"
-			                                    data-bs-target="#deleteModal">
-			                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
-			                                </button>
-			                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
-			                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			                                    <div class="modal-dialog">
-			                                        <div class="modal-content">
-			                                            <div class="modal-header">
-			                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
-			                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-			                                                    aria-label="Close"></button>
-			                                            </div>
-			                                            <div class="modal-body fs-6">
-			                                                선택하신 게시물을 정말로 삭제하시겠습니까?
-			                                            </div>
-			                                            <div class="modal-footer">
-			                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-			                                                <button type="button" class="btn btn-primary">삭제</button>
-			                                            </div>
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                <button class="border-0 btn btn-danger shadow" type="button" data-bs-toggle="modal"
-			                                    data-bs-target="#deleteModal">
-			                                    <i class="fa-solid fa-xmark"></i>
-			                                </button>
-			                            </div>
-			                            <div class="col-2 offset-8" align="right">
-			                                <button class="border-0 btn bg-success shadow" type="button" data-bs-toggle="modal"
-			                                    data-bs-target="#deleteModal">
-			                                    <i class="fa-regular fa-file-excel" style="color: white;"></i>
-			                                </button>
-			                                <a class="border-0 btn shadow bg-primary" role="button" id="btnForm">
-			                                    <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
-			                                </a>
-			                            </div>
-			                        </div>
-								</div>
-							</div>
+	<body> <!-- ######## 개인 프로젝트 회원관리 페이지 만드는데, 검색, 삭제 후가 가능하게 구현하기 / 모달 넣기 ######## -->
+		<div class="container"> 
+			<div class="container-fluid d-grid col-6 mx-auto">
+				<div class="Navbar">
+					<nav class="navbar navbar-expand-lg">
+						<a class="navbar-brand" href="" style="margin-left: 150px"><img src="D:\factory\ws_sts_4151\seoul\image\logo2\logo_nobg.png" width="200px"></a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 50px">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="#">홈</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">To do list</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">성취</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">팀</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">응원댓글</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">마이페이지</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">회원가입</a>
+								</li>
+							</ul>
 						</div>
-					</div>
+						<button type="button" class="btn btn-outline-warning" style="align-content: flex-end; margin-right: 150px;">로그인</button>
+					</nav>
 				</div>
-			</form>
-			<footer>
-		        <div class="footer">
-		            <div class="footer_inner">
-		                <!--[주]고객센터,제휴문의,서비스안내-->
-		                <ul class="footer_link" id="footer_link">
-		                    <li><a target="_blank" class="footer_item" href="#"
-		                            id="fot.agreement"><span class="text">이용약관</span></a></li>
-		                    <li><a target="_blank" class="footer_item" href="#l"
-		                            id="fot.privacy"><span class="text"><strong>개인정보처리방침</strong></span></a></li>
-		                    <li><a target="_blank" class="footer_item" href="#"
-		                            id="fot.disclaimer"><span class="text">책임의 한계와 법적고지</span></a></li>
-		                    <li><a target="_blank" class="footer_item"
-		                            href="#" id="fot.help"><span
-		                                class="text">회원정보 고객센터</span></a></li>
-		                </ul>
-		                <div class="footer_copy">
-		                    <a  id="fot.naver" target="_blank" href="https://www.navercorp.com">
-		                        <img class="bg-dark" src="/resources/images/main/logo2.png" alt="logo" style="width: 45px;">
-		                    </a>
-		                    <span class="text">Copyright</span>
-		                    <span class="corp">© MATZIP Corp.</span>
-		                    <span class="text">All Rights Reserved.</span>
-		                </div>
-		            </div>
-		        </div>
-		    </footer>
-		</main>
-	
-		<!-- end --> 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-		<script src="https://kit.fontawesome.com/a33686bef4.js" crossorigin="anonymous"></script>
-		<script>
-		
-		var goUrlList = "/codeGroup/codeGroupList"; 
-		var goUrlInst = "/codeGroup/codeGroupInst";
-		var goUrlUpdt = "/codeGroup/codeGroupUpdt";	
-		var goUrlUele = "/codeGroup/codeGroupUele";	
-		var goUrlDele = "/codeGroup/codeGroupDele";	
-		var goUrlForm = "/codeGroup/codeGroupForm";
-		
-		var form = $("form[name=myForm]");
-		
-		var ccgSeq = $("input:hidden[name=ccgSeq]");
-		
-		
-		 $("#btnReset").on("click", function(){
-			 $(location).attr("href", goUrlList);
-		 });
-		 
-		// 페이지 네이션 만들기
-		 goList = function(thisPage) {
- 			$("input:hidden[name=thisPage]").val(thisPage);
- 			form.attr("action", goUrlList).submit();
- 		};
- 		
- 		/* var seq = $("input:hidden[name=ccgSeq]"); */
+				<center><h2>회원가입</h2></center>
+				<hr>
+				<table>
+					<tr>
+						<th>아이디</th>
+						<td><input type="text" class="form-control" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"></td>
+						<td><button type="button" class="btn btn-outline-secondary">중복확인</button></td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td>
+							<input type="text" class="form-control" placeholder="비밀번호를 입력해주세요">
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>비밀번호확인</th>
+						<td>
+							<input type="text" class="form-control" placeholder="비밀번호를 한번 더 입력해주세요">
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td>
+							<input type="text" class="form-control" placeholder="이름을 입력해주세요">
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<td>
+							<input type="text" class="form-control" placeholder="연락처를 입력해주세요">
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td><input type="text" class="form-control" placeholder="이메일을 입력해주세요"></td>
+						<td><button type="button" class="btn btn-outline-secondary">중복확인</button></td>
+					</tr>
+					<tr>
+						<th>성별</th>
+						<td>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+								<label class="form-check-label" for="flexRadioDefault1">
+									여성
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+								<label class="form-check-label" for="flexRadioDefault1">
+									남성
+								</label>
+							</div>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
 
- 		
- 		$('#btnForm').on("click", function() {
- 			goForm(0);                
- 		});
+		<!-- 주소 넣는 부분 s -->
+							<div class="row gy-2">
+								<div class="col-4">
+									<input type="text" name="zip" class="form-control" id="zip" aria-label="post">
+								</div>
+								<div class="col-2">
+									<button type="button" class="btn btn-secondary" onclick="sample6_execDaumPostcode()"> 우편번호 검색 </button>
+								</div>
+								<br>
+								<div>
+									<input type="text" name="addr1" class="form-control" id="addr1" aria-label="addr">
+								</div>
+								<div>
+									<input type="text" name="addr2" class="form-control" id="addr2" aria-label="addr2">
+								</div>
+								<div>
+									<input type="text" name="addr3" class="form-control" id="addr3" aria-label="addr2">
+								</div>
+							</div>
+		<!-- 주소 넣는 부분 e -->
 
- 		goForm = function(keyValue) {
- 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
- 	    	ccgSeq.val(keyValue);
- 			form.attr("action", goUrlForm).submit();
- 		}
-		
-		</script>
+						</td>
+					</tr>
+					<tr class="birth field_birth">
+						<th>생년월일</th>
+						<td>
+							<div class="birth_day">
+								<input type="text" name=birth_year id="birth_year" pattern="[0-9]*" value="" label="생년월일" size=4 maxlength=4 placeholder="YYYY">
+								<span class="bar"></span>
+								<input type="text" name=birth[] id="birth_month" pattern="[0-9]*" value="" label="생년월일" size=2 maxlength=2 placeholder="MM">
+								<span class="bar"></span>
+								<input type="text" name=birth[] id="birth_day" pattern="[0-9]*" value="" label="생년월일" size=2 maxlength=2 placeholder="DD">
+							</div>
+							<p class="txt_guide">
+								<span class="txt bad"></span>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="row gy-2">
+								<div class="col-4">
+									<input type="text" name="zip" class="form-control" id="validationCustom01" aria-label="post">
+								</div>
+								<div class="col-2">
+									<button type="button" class="btn btn-secondary" onclick="openZipSearch()"> 우편번호 검색 </button>
+								</div>
+								<br>
+								<div>
+									<input type="text" name="addr1" class="form-control" id="validationCustom01" aria-label="addr">
+								</div>
+								<div>
+									<input type="text" name="addr2" class="form-control" id="validationCustom01" aria-label="addr2">
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>가입경로</th>
+						<td>
+							<select class="form-select" aria-label="Default select example">
+								<option selected>경로를 선택해주세요</option>
+								<option value="1">네이버</option>
+								<option value="2">인스타그램</option>
+								<option value="3">트위터</option>
+								<option value="4">페이스북</option>
+								<option value="5">지인</option>
+							</select>
+						</td>
+						<td></td>
+					</tr>
+					<br>
+					<br>
+					<tr>
+						<th>다짐</th>
+						<td colspan="2">
+							<input type="text" class="form-control" placeholder="다짐을 입력해주세요"><hr>
+						</td>
+					</tr>
+					<tr center>
+						<td colspan="2">
+							<center>
+								<button type="button" class="btn btn-warning">가입하기</button>
+								<button type="button" class="btn btn-outline-dark">뒤로가기</button>
+							</center>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    	<script src="https://kit.fontawesome.com/e29f2fca9d.js" crossorigin="anonymous"></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+    	<script type="text/javascript">
+    	  $('.birth_day input').focus(function(){
+    		    $(this).parent().addClass('on');
+    		  }).keyup(function(){
+    		    var inputText = $(this).val();
+    		    var number = $(this).val().replace(/[^0-9]/g,'');
+    		    $(this).val(number);
+    		  }).blur(function(){
+    		  });
+    	  </script>
+    		function openZipSearch() {
+		    new daum.Postcode({
+		          oncomplete: function(data) {
+		              $('[name=zip]').val(data.zonecode); // 우편번호 (5자리)
+		              $('[name=addr1]').val(data.address);
+		              $('[name=addr2]').val(data.buildingName);
+		          }
+		    }).open();
+		} 
+    	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	</body>
 </html>
