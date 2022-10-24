@@ -63,11 +63,6 @@
 						<option value="2" <c:if test="${vo.shOptionDate eq 2}"></c:if>>가입일</option>
 						<option value="3" <c:if test="${vo.shOptionDate eq 3}"></c:if>>탈퇴일</option>
 					</select>
-					
-					
-					
-					
-					
 					<select class="col form-select">
 						<option selected>선택</option>
 						<option value="1">1</option>
@@ -195,9 +190,6 @@
 			  </ul>
 			</nav>
 			 -->
-			
-						
-						
 			<div class="container-fluid px-0 mt-2">
 			    <div class="row">
 			        <div class="col">
@@ -225,9 +217,6 @@
 			        </div>
 			    </div>
 			</div>
-						
-			
-			
 			<div style="float: left;">
 				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 					<i class="fa-solid fa-rotate-left">취소</i>
@@ -249,7 +238,6 @@
 					</div>
 				</div>
 				<button type="button" class="btn btn-danger btn-sm" name="" id="btnDelete"><i class="fa-solid fa-x">삭제</i></button>
-				
 				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -273,7 +261,6 @@
 				</a>
 				<button class="btn btn-primary" type="button" href="/memberRegForm.html"><i class="fa-solid fa-plus"></i></button>
 			</div>
-			
 		</form>
 		</div>	
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -298,12 +285,11 @@
 			    yearSuffix: '년'
 			});
 			 */
-			
-			 var goUrlList = "/member/memberList";				// var: 변수 선언 예약어			/* #-> */
-				var goUrlInst = "/member/memberInst"; 			/* #-> */
+			 	var goUrlDele = "/member/memberDele";
+			 	var goUrlList = "/member/memberList";				// var: 변수 선언 예약어			/* #-> */
+			 	/* 				var goUrlInst = "/member/memberInst"; 			/* #-> */
 				var goUrlUpdt = "/member/memberUpdt";				/* #-> */
 				var goUrlUele = "/member/memberUele";				/* #-> */
-				var goUrlDele = "/member/memberDele";
 				var goUrlForm = "/member/memberForm";/* #-> */
 
 				var form = $("form[name=form]");
@@ -327,7 +313,6 @@
 				}); */
 				
 				
-				
 				$("#btnDelete").on("click", function(){
 					if($("input[name=checkboxSeq]:checked").length > 0 ) {
 						$("input:hidden[name=exDeleteType]").val(2);
@@ -342,7 +327,6 @@
 						$("#modalAlert").modal("show");
 					}
 				});
-				
 				
 				goForm = function(keyValue) {
 			    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
